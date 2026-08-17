@@ -13,6 +13,12 @@
   "modal_title": "Únete a nuestro Telegram",
   "modal_body": "Recibe nuevas guías y actualizaciones en cuanto las publiquemos.",
   "close_label": "Cerrar",
+  "website_label": "Sitio web",
+  "app_label": "App",
+  "where_to_play": "Dónde jugar",
+  "affiliate_note": "Estos son enlaces de afiliado: podemos recibir una comisión si te registras a través de ellos, sin costo adicional para ti.",
+  "more_games": "Más juegos",
+  "register_cta": "Cómo registrarte y reclamar tu bono",
   "disclosure_text": "",
   "footer_note": "Los juegos de azar implican riesgo. Nada en este sitio garantiza ganancias. Juega con responsabilidad."
 }

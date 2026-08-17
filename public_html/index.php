@@ -33,7 +33,7 @@ require __DIR__ . '/includes/header.php';
       <span class="btn btn-gradient btn-block"><?= htmlspecialchars(t('learn_more')) ?></span>
     </div>
   </a>
-  <a class="game-card" href="/script/apple-of-fortune.php">
+  <a class="game-card" href="/games/apple-of-fortune.php">
     <div class="game-card-thumb"><img src="/assets/img/apple-of-fortune.jpeg" alt="Apple of Fortune"></div>
     <div class="game-card-body">
       <h3 class="game-card-title"><?= htmlspecialchars(t('free_label')) ?> | <?= htmlspecialchars(t('nav_apple')) ?></h3>

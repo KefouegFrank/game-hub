@@ -13,6 +13,12 @@
   "modal_title": "Join our Telegram",
   "modal_body": "Get new game guides and updates as soon as we publish them.",
   "close_label": "Close",
+  "website_label": "Website",
+  "app_label": "App",
+  "where_to_play": "Where to play",
+  "affiliate_note": "These are affiliate links — we may earn a commission if you sign up through them, at no extra cost to you.",
+  "more_games": "More games",
+  "register_cta": "How to register & claim your bonus",
   "disclosure_text": "",
   "footer_note": "Gambling involves risk. Nothing on this site guarantees winnings. Play responsibly."
 }

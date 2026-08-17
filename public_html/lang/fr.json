@@ -13,6 +13,12 @@
   "modal_title": "Rejoignez notre Telegram",
   "modal_body": "Recevez les nouveaux guides et mises à jour dès leur publication.",
   "close_label": "Fermer",
+  "website_label": "Site web",
+  "app_label": "Application",
+  "where_to_play": "Où jouer",
+  "affiliate_note": "Ce sont des liens d'affiliation — nous pouvons toucher une commission si vous vous inscrivez via ces liens, sans coût supplémentaire pour vous.",
+  "more_games": "Plus de jeux",
+  "register_cta": "Comment s'inscrire et réclamer votre bonus",
   "disclosure_text": "",
   "footer_note": "Les jeux d'argent comportent des risques. Rien sur ce site ne garantit des gains. Jouez de façon responsable."
 }

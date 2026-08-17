@@ -17,6 +17,13 @@ define('SHOW_AFFILIATE_DISCLOSURE', false);
 define('TELEGRAM_URL', 'https://t.me/gamehubtest');
 define('APK_DOWNLOAD_URL', '#');
 
+// --- Affiliate platform links (placeholders until real affiliate links exist) ---
+define('ONEXBET_WEBSITE_URL', '#');
+define('ONEXBET_APP_URL', '#');
+define('MAILBET_WEBSITE_URL', '#');
+define('MAILBET_APP_URL', '#');
+define('TUTORIAL_VIDEO_URL', '#');
+
 // --- Database (optional — only needed if you want to track referral clicks) ---
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'gameshub');
