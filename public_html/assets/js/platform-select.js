@@ -4,6 +4,7 @@
   const buttons = document.querySelectorAll('.platform-btn');
   const mediaLink = document.getElementById('game-media-link');
   const mediaImg = document.getElementById('game-media-img');
+  const continueBtn = document.getElementById('continue-btn');
   if (!buttons.length || !mediaLink) return;
 
   function activate(btn) {
@@ -12,6 +13,12 @@
     mediaLink.href = btn.dataset.href;
     if (mediaImg && btn.dataset.media) {
       mediaImg.src = btn.dataset.media;
+    }
+    if (continueBtn) {
+      continueBtn.href = btn.dataset.href;
+      if (btn.dataset.platform) {
+        continueBtn.dataset.platform = btn.dataset.platform;
+      }
     }
   }
 

@@ -20,9 +20,13 @@ define('APK_DOWNLOAD_URL', '#');
 // --- Affiliate platform links (placeholders until real affiliate links exist) ---
 define('ONEXBET_WEBSITE_URL', '#');
 define('ONEXBET_APP_URL', '#');
-define('MAILBET_WEBSITE_URL', '#');
-define('MAILBET_APP_URL', '#');
+define('MELBET_WEBSITE_URL', '#');
+define('MELBET_APP_URL', '#');
 define('TUTORIAL_VIDEO_URL', '#');
+
+// --- Promo codes (blank until real codes exist — the pill only renders when set) ---
+define('ONEXBET_PROMO_CODE', '7DEVX');
+define('MELBET_PROMO_CODE', '7DEVX');
 
 // --- Database (optional — only needed if you want to track referral clicks) ---
 define('DB_HOST', 'localhost');
