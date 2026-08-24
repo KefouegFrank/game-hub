@@ -25,10 +25,18 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: radial-gradient(ellipse at top, var(--bg-soft), var(--bg) 60%);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 #particles-bg {
@@ -620,6 +628,7 @@ h1, h2, h3,
 .more-games { padding-bottom: 60px; }
 
 .site-footer {
+  flex-shrink: 0;
   border-top: 1px solid var(--border);
   padding: 30px 0;
   color: var(--muted);
@@ -771,6 +780,48 @@ h1, h2, h3,
 }
 
 .signup-privacy-note { text-align: center; margin-top: 16px; }
+
+/* Game carousel */
+
+.carousel-box {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 0 20px 20px;
+  border: 0.5px solid var(--accent-a);
+  border-radius: 16px;
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.carousel-heading {
+  text-align: center;
+  color: var(--accent-a);
+  font-size: 1.1rem;
+  margin: 0 24px 18px 0;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: carousel-scroll 35s linear infinite;
+}
+
+/* .carousel-track:hover { animation-play-state: paused; } */
+
+.carousel-card {
+  width: 220px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+@keyframes carousel-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
 @media (max-width: 480px) {
   .logo { font-size: 1.2rem; gap: 6px; }
