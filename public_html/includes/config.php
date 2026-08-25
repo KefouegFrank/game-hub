@@ -28,6 +28,10 @@ define('TUTORIAL_VIDEO_URL', '#');
 define('ONEXBET_PROMO_CODE', '7DEVX');
 define('MELBET_PROMO_CODE', '7DEVX');
 
+// --- Telegram bot (forwards deposit-proof screenshot uploads, see upload-proof.php) ---
+define('TELEGRAM_BOT_TOKEN', ''); // set in config.local.php on the live server
+define('TELEGRAM_UPLOAD_CHAT_ID', ''); // chat/channel ID the bot sends uploads to
+
 // --- Database (optional — only needed if you want to track referral clicks) ---
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'gameshub');

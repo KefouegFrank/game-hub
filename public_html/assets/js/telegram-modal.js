@@ -8,15 +8,6 @@
     if (!dialog.open) dialog.showModal();
   }, 15000);
 
-  dialog.querySelectorAll('[data-modal-dismiss]').forEach((el) => {
-    el.addEventListener('click', () => dialog.close());
-  });
-
+  initDialogDismiss(dialog);
   document.getElementById('modal-join-btn').addEventListener('click', () => dialog.close());
-
-  dialog.addEventListener('click', (e) => {
-    const rect = dialog.getBoundingClientRect();
-    const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
-    if (!inside) dialog.close();
-  });
 })();

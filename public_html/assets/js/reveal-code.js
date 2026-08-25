@@ -1,18 +1,15 @@
-// Crash-style unlock step: reveals the real promo code for the selected
-// platform (see platform-buttons.php's data-code) and unlocks #continue-btn.
-// The code itself is never fake — this only gates *when* it's shown.
+// Swaps the platform-picker view for the deposit-proof panel — see
+// includes/deposit-proof-panel.php. Not a modal or navigation, just
+// hiding one section and showing its sibling.
 (() => {
   const btn = document.getElementById('code-reveal-btn');
-  const continueBtn = document.getElementById('continue-btn');
-  if (!btn || !continueBtn) return;
+  const before = document.getElementById('reveal-section-before');
+  const after = document.getElementById('reveal-section-after');
+  if (!btn || !before || !after) return;
 
   btn.addEventListener('click', () => {
-    if (btn.classList.contains('revealed')) return;
-    const code = btn.dataset.code;
-    if (navigator.clipboard) navigator.clipboard.writeText(code).catch(() => {});
-    btn.textContent = code;
-    btn.classList.add('revealed');
-    continueBtn.removeAttribute('disabled');
-    continueBtn.removeAttribute('aria-disabled');
+    before.hidden = true;
+    after.hidden = false;
+    after.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();

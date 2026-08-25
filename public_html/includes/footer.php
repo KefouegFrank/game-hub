@@ -19,11 +19,14 @@
 </footer>
 
 <script src="/assets/js/particles.js?v=<?= filemtime(__DIR__ . '/../assets/js/particles.js') ?>"></script>
+<script src="/assets/js/dialog-utils.js?v=<?= filemtime(__DIR__ . '/../assets/js/dialog-utils.js') ?>"></script>
 <script src="/assets/js/telegram-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/telegram-modal.js') ?>"></script>
 <script src="/assets/js/platform-select.js?v=<?= filemtime(__DIR__ . '/../assets/js/platform-select.js') ?>"></script>
 <script src="/assets/js/promo-copy.js?v=<?= filemtime(__DIR__ . '/../assets/js/promo-copy.js') ?>"></script>
 <script src="/assets/js/registration-check.js?v=<?= filemtime(__DIR__ . '/../assets/js/registration-check.js') ?>"></script>
 <script src="/assets/js/reveal-code.js?v=<?= filemtime(__DIR__ . '/../assets/js/reveal-code.js') ?>"></script>
+<script src="/assets/js/screenshot-example-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/screenshot-example-modal.js') ?>"></script>
+<script src="/assets/js/proof-upload.js?v=<?= filemtime(__DIR__ . '/../assets/js/proof-upload.js') ?>"></script>
 <script src="/assets/js/signup-form.js?v=<?= filemtime(__DIR__ . '/../assets/js/signup-form.js') ?>"></script>
 <script src="/assets/js/script.js?v=<?= filemtime(__DIR__ . '/../assets/js/script.js') ?>"></script>
 </body>

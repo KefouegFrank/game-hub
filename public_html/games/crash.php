@@ -4,15 +4,21 @@ $pageTitle = 'Crash — how it works | ' . SITE_NAME;
 require __DIR__ . '/../includes/header.php';
 ?>
 
-<?php
-$gameMediaWebsite = '/assets/img/crash.jpg';
-$gameMediaAlt = 'Crash gameplay screenshot';
-require __DIR__ . '/../includes/game-media.php';
-require __DIR__ . '/../includes/brand-buttons.php';
-require __DIR__ . '/../includes/code-reveal-step.php';
-require __DIR__ . '/../includes/registration-guide-cta.php';
-require __DIR__ . '/../includes/registration-check-modal.php';
-?>
+<div id="reveal-section-before">
+  <?php
+  $gameMediaWebsite = '/assets/img/crash.jpg';
+  $gameMediaAlt = 'Crash gameplay screenshot';
+  require __DIR__ . '/../includes/game-media.php';
+  require __DIR__ . '/../includes/brand-buttons.php';
+  require __DIR__ . '/../includes/code-reveal-step.php';
+  ?>
+</div>
+
+<div id="reveal-section-after" hidden>
+  <?php require __DIR__ . '/../includes/deposit-proof-panel.php'; ?>
+</div>
+
+<?php require __DIR__ . '/../includes/registration-guide-cta.php'; ?>
 
 <article class="game-page">
   <h1>Crash: how the game actually works</h1>

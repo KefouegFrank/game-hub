@@ -31,6 +31,38 @@ function icon_globe(): string {
         . '</svg>';
 }
 
+function icon_warning(string $class = ''): string {
+    $class = htmlspecialchars($class);
+    return '<svg class="' . $class . '" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        . '<path d="M12 3 2 20h20L12 3Z" />'
+        . '<path d="M12 10v4" />'
+        . '<circle cx="12" cy="17" r="0.5" fill="#f59e0b" />'
+        . '</svg>';
+}
+
+function icon_home(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        . '<path d="M4 11 12 4l8 7" />'
+        . '<path d="M6 10v9h12v-9" />'
+        . '<path d="M10 19v-5h4v5" />'
+        . '</svg>';
+}
+
+function icon_upload(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        . '<path d="M12 15V4M8 8l4-4 4 4" />'
+        . '<path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" />'
+        . '</svg>';
+}
+
+function icon_image_placeholder(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        . '<rect x="3" y="4" width="18" height="16" rx="2" />'
+        . '<circle cx="8.5" cy="9.5" r="1.5" />'
+        . '<path d="m3 17 5-5 4 4 3-3 6 6" />'
+        . '</svg>';
+}
+
 // $class picks the sizing context (nav logo vs. hero visual); $gradientId must be
 // unique per page since both can appear on the same page (e.g. homepage).
 function icon_logo_mark(string $class, string $gradientId, string $strokeWidth): string {
