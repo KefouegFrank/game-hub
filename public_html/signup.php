@@ -21,8 +21,8 @@ require __DIR__ . '/includes/header.php';
   <div class="signup-platform-list">
     <?php foreach ($platforms as $slug => $data): ?>
       <a class="brand-pill brand-pill-wide<?= $slug === $platform ? ' active' : '' ?>" data-platform="<?= htmlspecialchars($slug) ?>" href="<?= htmlspecialchars($data['url']) ?>"<?= $data['url'] === '#' ? '' : ' target="_blank" rel="noopener"' ?>>
-        <img src="<?= htmlspecialchars($data['logo']) ?>" alt="<?= htmlspecialchars($data['name']) ?>">
-        <span class="chevron">›</span>
+        <span class="lead-chevron">»</span>
+        <span class="brand-pill-logo"><img src="<?= htmlspecialchars($data['logo']) ?>" alt="<?= htmlspecialchars($data['name']) ?>"></span>
       </a>
     <?php endforeach; ?>
   </div>

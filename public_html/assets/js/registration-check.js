@@ -7,6 +7,7 @@
 
   continueBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    if (continueBtn.hasAttribute('disabled')) return;
     dialog.showModal();
   });
 

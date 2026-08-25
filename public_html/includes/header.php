@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/config.php'; ?>
+<?php
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/icons.php';
+?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($CURRENT_LANG) ?>">
 <head>
@@ -18,23 +21,11 @@
 <header class="site-header">
   <div class="container header-row">
     <a class="icon-btn telegram-btn" href="<?= htmlspecialchars(TELEGRAM_URL) ?>" target="_blank" rel="noopener" aria-label="<?= htmlspecialchars(t('telegram_cta')) ?>" title="<?= htmlspecialchars(t('telegram_cta')) ?><?= TELEGRAM_URL === '#' ? ' — ' . htmlspecialchars(t('coming_soon')) : '' ?>">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4 12.4 19 5.5c.7-.3 1.4.3 1.1 1.1l-2.6 12.7c-.2.9-1.2 1.3-1.9.8l-3.9-2.9-2 1.9c-.3.3-.7.3-.9-.1l-.6-3.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="m8.2 14.1 9-6.9-10.4 7 1.4 4.6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
+      <?= icon_telegram() ?>
     </a>
 
     <a href="/" class="logo">
-      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <linearGradient id="logoGradNav" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0" style="stop-color:var(--accent-a)" />
-            <stop offset="1" style="stop-color:var(--accent-b)" />
-          </linearGradient>
-        </defs>
-        <path d="M16 2 L28 16 L16 30 L4 16 Z" stroke="url(#logoGradNav)" stroke-width="2.5" stroke-linejoin="round" />
-        <circle cx="16" cy="16" r="4" fill="url(#logoGradNav)" />
-      </svg>
+      <?= icon_logo_mark('logo-mark', 'logoGradNav', '2.5') ?>
       <span class="logo-word"><?= htmlspecialchars(SITE_NAME) ?></span>
     </a>
 
