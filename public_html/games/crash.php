@@ -6,12 +6,11 @@ require __DIR__ . '/../includes/header.php';
 
 <?php
 $gameMediaWebsite = '/assets/img/crash.jpg';
-$gameMediaApp = '/assets/img/crash2.jpg';
 $gameMediaAlt = 'Crash gameplay screenshot';
 require __DIR__ . '/../includes/game-media.php';
-require __DIR__ . '/../includes/platform-buttons.php';
-require __DIR__ . '/../includes/pre-play-callout.php';
+require __DIR__ . '/../includes/brand-buttons.php';
 require __DIR__ . '/../includes/code-reveal-step.php';
+require __DIR__ . '/../includes/registration-guide-cta.php';
 require __DIR__ . '/../includes/registration-check-modal.php';
 ?>
 
