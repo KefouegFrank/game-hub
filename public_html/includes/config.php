@@ -76,11 +76,24 @@ $SUPPORTED_LANGS = [
     'es' => 'Español',
 ];
 
-// --- Current language (from ?lang= query param, default en) ---
-$lang = $_GET['lang'] ?? 'en';
+// --- Current language (?lang= wins, then the remembered choice, else en) ---
+$lang = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'en';
 if (!array_key_exists($lang, $SUPPORTED_LANGS)) {
     $lang = 'en';
 }
+
+// Remember an explicit pick: internal links don't carry ?lang=, so without this
+// every navigation drops back to English.
+if (isset($_GET['lang']) && $lang === $_GET['lang'] && ($_COOKIE['lang'] ?? '') !== $lang && !headers_sent()) {
+    setcookie('lang', $lang, [
+        'expires' => time() + 31536000,
+        'path' => '/',
+        'secure' => !empty($_SERVER['HTTPS']),
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+}
+
 $GLOBALS['CURRENT_LANG'] = $lang;
 
 function t(string $key): string {

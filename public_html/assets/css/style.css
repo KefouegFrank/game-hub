@@ -926,9 +926,9 @@ h3,
 
 .modal-box {
   width: 90vw;
-  max-width: 360px;
+  max-width: 460px;
   margin: auto;
-  padding: 20px 18px 24px;
+  padding: 35px;
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--accent-solid);
@@ -983,6 +983,7 @@ h3,
   margin: 0 0 10px;
   padding-inline: 26px; /* clears the close button without breaking centring */
   font-size: 1.2rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .modal-box p {
@@ -1180,7 +1181,7 @@ h3,
 
 .carousel-box {
   max-width: 900px;
-  margin: 40px auto;
+  margin: 120px auto 20px auto;
   padding: 20px 0 20px 20px;
   border: 0.5px solid var(--accent-a);
   border-radius: 16px;

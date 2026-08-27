@@ -43,7 +43,6 @@ require __DIR__ . '/includes/header.php';
     <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>"><?= htmlspecialchars(t('signup_start')) ?></button>
   </form>
 
-  <p class="fine-print signup-privacy-note"><?= htmlspecialchars(t('signup_privacy_note')) ?></p>
 </div>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
