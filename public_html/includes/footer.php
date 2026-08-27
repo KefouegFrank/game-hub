@@ -1,12 +1,12 @@
 </main>
 
-<dialog id="telegram-modal" class="modal-box" closedby="any" aria-labelledby="telegram-modal-title" aria-describedby="telegram-modal-body">
+<dialog id="whatsapp-modal" class="modal-box" closedby="any" aria-labelledby="whatsapp-modal-title" aria-describedby="whatsapp-modal-body">
   <button type="button" class="modal-close" data-modal-close aria-label="<?= htmlspecialchars(t('close_label')) ?>">&times;</button>
-  <h3 id="telegram-modal-title"><?= htmlspecialchars(t('modal_title')) ?></h3>
-  <p id="telegram-modal-body"><?= htmlspecialchars(t('modal_body')) ?></p>
-  <a class="btn btn-cta btn-telegram btn-block" id="modal-join-btn" autofocus href="<?= htmlspecialchars(TELEGRAM_URL) ?>" target="_blank" rel="noopener">
-    <?= icon_telegram() ?>
-    <span><?= htmlspecialchars(t('telegram_cta')) ?></span>
+  <h3 id="whatsapp-modal-title"><?= htmlspecialchars(t('modal_title')) ?></h3>
+  <p id="whatsapp-modal-body"><?= htmlspecialchars(t('modal_body')) ?></p>
+  <a class="btn btn-cta btn-whatsapp btn-block" id="modal-join-btn" autofocus href="<?= htmlspecialchars(WHATSAPP_URL) ?>" target="_blank" rel="noopener">
+    <?= icon_whatsapp() ?>
+    <span><?= htmlspecialchars(t('whatsapp_cta')) ?></span>
   </a>
   <button type="button" class="btn btn-block modal-dismiss-btn" data-modal-close><?= htmlspecialchars(t('close_label')) ?></button>
 </dialog>
@@ -20,8 +20,8 @@
 
 <script src="/assets/js/particles.js?v=<?= filemtime(__DIR__ . '/../assets/js/particles.js') ?>"></script>
 <script src="/assets/js/modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/modal.js') ?>"></script>
-<script src="/assets/js/telegram-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/telegram-modal.js') ?>"></script>
-<script src="/assets/js/hero-player.js?v=<?= filemtime(__DIR__ . '/../assets/js/hero-player.js') ?>"></script>
+<script src="/assets/js/whatsapp-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/whatsapp-modal.js') ?>"></script>
+<script src="/assets/js/video-poster.js?v=<?= filemtime(__DIR__ . '/../assets/js/video-poster.js') ?>"></script>
 <script src="/assets/js/platform-select.js?v=<?= filemtime(__DIR__ . '/../assets/js/platform-select.js') ?>"></script>
 <script src="/assets/js/promo-copy.js?v=<?= filemtime(__DIR__ . '/../assets/js/promo-copy.js') ?>"></script>
 <script src="/assets/js/registration-check.js?v=<?= filemtime(__DIR__ . '/../assets/js/registration-check.js') ?>"></script>

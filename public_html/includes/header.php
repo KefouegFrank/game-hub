@@ -20,8 +20,8 @@ require_once __DIR__ . '/icons.php';
 
 <header class="site-header">
   <div class="container header-row">
-    <a class="icon-btn telegram-btn" href="<?= htmlspecialchars(TELEGRAM_URL) ?>" target="_blank" rel="noopener" aria-label="<?= htmlspecialchars(t('telegram_cta')) ?>" title="<?= htmlspecialchars(t('telegram_cta')) ?><?= TELEGRAM_URL === '#' ? ' — ' . htmlspecialchars(t('coming_soon')) : '' ?>">
-      <?= icon_telegram() ?>
+    <a class="icon-btn whatsapp-btn" href="<?= htmlspecialchars(WHATSAPP_URL) ?>" target="_blank" rel="noopener" aria-label="<?= htmlspecialchars(t('whatsapp_cta')) ?>" title="<?= htmlspecialchars(t('whatsapp_cta')) ?><?= WHATSAPP_URL === '#' ? ' — ' . htmlspecialchars(t('coming_soon')) : '' ?>">
+      <?= icon_whatsapp() ?>
     </a>
 
     <a href="/" class="logo">

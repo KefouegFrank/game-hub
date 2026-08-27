@@ -27,5 +27,4 @@
     <?= icon_clapper() ?>
     <?= htmlspecialchars(t('register_cta')) ?>
   </button>
-  <p class="fine-print"><?= htmlspecialchars(t('affiliate_note')) ?></p>
 </div>

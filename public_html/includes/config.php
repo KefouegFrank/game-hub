@@ -8,14 +8,14 @@
 // --- Basic site info ---
 define('SITE_NAME', 'GamesHub');
 define('SITE_URL', 'http://localhost:8000'); // change to your real domain in production
-define('SITE_TAGLINE', '');
+define('SITE_TAGLINE', 'Best online games and betting platforms online');
 
 // --- Affiliate disclosure ---
 define('SHOW_AFFILIATE_DISCLOSURE', false);
 
-// --- External links (placeholders until real accounts/builds exist) ---
-define('TELEGRAM_URL', '#');
-define('APK_DOWNLOAD_URL', '#');
+// --- External links ---
+define('WHATSAPP_URL', 'https://whatsapp.com/channel/0029Vb605FpFcowFwiiIbG3H');
+define('APK_DOWNLOAD_URL', 'https://rboss1.megapari-983300.com/');
 
 // --- Affiliate platform links (placeholders until real affiliate links exist) ---
 define('ONEXBET_WEBSITE_URL', '#');
@@ -37,8 +37,8 @@ define('HERO_POSTER', ''); // optional still shown before play; blank uses the c
 define('DEPOSIT_AMOUNT', '12367 XAF');
 
 // --- Promo codes (blank until real codes exist — the pill only renders when set) ---
-define('ONEXBET_PROMO_CODE', '7DEVX');
-define('MEGAPARI_PROMO_CODE', '7DEVX');
+define('ONEXBET_PROMO_CODE', 'RBOSS1');
+define('MEGAPARI_PROMO_CODE', 'RBOSS1');
 
 // --- Telegram bot (forwards deposit-proof screenshot uploads, see upload-proof.php) ---
 define('TELEGRAM_BOT_TOKEN', ''); // set in config.local.php on the live server
