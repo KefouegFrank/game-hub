@@ -10,11 +10,11 @@
   $rowCode = ONEXBET_PROMO_CODE;
   require __DIR__ . '/promo-row.php';
 
-  $rowBrandName = 'Melbet';
-  $rowLogo = '/assets/img/mailbet-logo.png';
-  $rowUrl = MELBET_WEBSITE_URL;
-  $rowCode = MELBET_PROMO_CODE;
+  $rowBrandName = 'MegaPari';
+  $rowLogo = '/assets/img/megapari-logo.png';
+  $rowUrl = MEGAPARI_WEBSITE_URL;
+  $rowCode = MEGAPARI_PROMO_CODE;
   require __DIR__ . '/promo-row.php';
   ?>
-  <a id="continue-btn" class="btn btn-gradient btn-block" href="<?= htmlspecialchars(ONEXBET_WEBSITE_URL) ?>" data-platform="onexbet"><?= htmlspecialchars(t('continue_cta')) ?></a>
+  <a id="continue-btn" class="btn btn-gradient btn-block" href="/signup.php?platform=onexbet" data-platform="onexbet"><?= htmlspecialchars(t('continue_cta')) ?></a>
 </div>

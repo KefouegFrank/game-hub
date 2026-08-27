@@ -24,10 +24,30 @@ function icon_android(string $color = 'currentColor', string $eye = '#fff'): str
         . '</svg>';
 }
 
-function icon_globe(): string {
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="1.6" aria-hidden="true">'
-        . '<circle cx="12" cy="12" r="9" />'
-        . '<path d="M3 12h18M12 3c2.2 2.4 3.5 5.5 3.5 9s-1.3 6.6-3.5 9c-2.2-2.4-3.5-5.5-3.5-9s1.3-6.6 3.5-9Z" />'
+// Browser marks for the "website" platform buttons — full-colour so they read as
+// brand logos next to the Android robot on the app buttons.
+function icon_chrome(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        . '<circle cx="12" cy="12" r="10.4" fill="#fff" />'
+        . '<path d="M1.6 12A10.4 10.4 0 0 1 17.2 2.99L14.5 7.67A5 5 0 0 0 7 12Z" fill="#ea4335" />'
+        . '<path d="M17.2 2.99a10.4 10.4 0 0 1 0 18.02L14.5 16.33a5 5 0 0 0 0-8.66Z" fill="#fbbc05" />'
+        . '<path d="M17.2 21.01A10.4 10.4 0 0 1 1.6 12H7a5 5 0 0 0 7.5 4.33Z" fill="#34a853" />'
+        . '<circle cx="12" cy="12" r="4.1" fill="#4285f4" />'
+        . '</svg>';
+}
+
+function icon_compass(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        . '<circle cx="12" cy="12" r="10.4" fill="#2f8fff" />'
+        . '<path d="m17 7-6.4 3.6L7 17l6.4-3.6Z" fill="#fff" />'
+        . '</svg>';
+}
+
+function icon_clapper(): string {
+    return '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        . '<rect x="2.5" y="9" width="19" height="11.5" rx="1.6" fill="#d7dcea" />'
+        . '<path d="M2.9 6.2 20 2.6l1 4.3L3.9 10.5Z" fill="#1b1f2b" />'
+        . '<path d="m8.1 4.7 1.5 3.9M13 3.7l1.5 3.9M17.9 2.7l1.5 3.9" stroke="#fff" stroke-width="1.2" />'
         . '</svg>';
 }
 

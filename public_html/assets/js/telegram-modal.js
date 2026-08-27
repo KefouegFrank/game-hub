@@ -1,13 +1,16 @@
-// Interstitial promoting the Telegram channel: shown once, 15s after any page
-// loads, as long as the visitor hasn't already dismissed it on that page.
+// Telegram interstitial: opens after 15s of visible time, then stays away for a
+// week. Joining suppresses it for a year — they're already in the channel.
 (() => {
   const dialog = document.getElementById('telegram-modal');
   if (!dialog) return;
 
-  setTimeout(() => {
-    if (!dialog.open) dialog.showModal();
-  }, 15000);
+  Modal.autoShow(dialog, { delay: 15000, key: 'telegram', days: 7 });
 
-  initDialogDismiss(dialog);
-  document.getElementById('modal-join-btn').addEventListener('click', () => dialog.close());
+  const joinBtn = document.getElementById('modal-join-btn');
+  if (joinBtn) {
+    joinBtn.addEventListener('click', () => {
+      Modal.suppress('telegram', 365);
+      dialog.close();
+    });
+  }
 })();

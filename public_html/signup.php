@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/config.php';
 
 $platforms = [
     'onexbet' => ['name' => '1xBet', 'logo' => '/assets/img/Logo_1xBet.png', 'url' => ONEXBET_WEBSITE_URL],
-    'melbet'  => ['name' => 'Melbet', 'logo' => '/assets/img/mailbet-logo.png', 'url' => MELBET_WEBSITE_URL],
+    'megapari'  => ['name' => 'MegaPari', 'logo' => '/assets/img/megapari-logo.png', 'url' => MEGAPARI_WEBSITE_URL],
 ];
 
 $platform = $_GET['platform'] ?? 'onexbet';

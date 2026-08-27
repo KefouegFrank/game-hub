@@ -1,5 +1,5 @@
-// "Continue to sign up" opens a Yes/No check before proceeding.
-// No: stay on the page. Yes: move on to the signup-info page for the selected platform.
+// "Continue to sign up" opens a Yes/No check before proceeding. The dialog's
+// form returns the answer, so Esc and a backdrop click both read as "no".
 (() => {
   const continueBtn = document.getElementById('continue-btn');
   const dialog = document.getElementById('registration-check-modal');
@@ -8,18 +8,10 @@
   continueBtn.addEventListener('click', (e) => {
     e.preventDefault();
     if (continueBtn.hasAttribute('disabled')) return;
-    dialog.showModal();
+    Modal.open(dialog);
   });
 
-  dialog.querySelectorAll('[data-modal-answer]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      dialog.close();
-      if (btn.dataset.modalAnswer === 'yes') {
-        const platform = continueBtn.dataset.platform || 'onexbet';
-        window.location.href = '/signup.php?platform=' + encodeURIComponent(platform);
-      }
-    });
+  dialog.addEventListener('close', () => {
+    if (dialog.returnValue === 'yes') window.location.href = continueBtn.href;
   });
-
-  initDialogDismiss(dialog);
 })();

@@ -14,19 +14,31 @@ define('SITE_TAGLINE', '');
 define('SHOW_AFFILIATE_DISCLOSURE', false);
 
 // --- External links (placeholders until real accounts/builds exist) ---
-define('TELEGRAM_URL', 'https://t.me/gamehubtest');
+define('TELEGRAM_URL', '#');
 define('APK_DOWNLOAD_URL', '#');
 
 // --- Affiliate platform links (placeholders until real affiliate links exist) ---
 define('ONEXBET_WEBSITE_URL', '#');
 define('ONEXBET_APP_URL', '#');
-define('MELBET_WEBSITE_URL', '#');
-define('MELBET_APP_URL', '#');
+define('MEGAPARI_WEBSITE_URL', '#');
+define('MEGAPARI_APP_URL', '#');
 define('TUTORIAL_VIDEO_URL', '#');
+
+// --- Registration walkthrough videos shown by the platform picker ---
+// MegaPari has no website capture yet, so both its buttons play the app one.
+define('ONEXBET_WEBSITE_VIDEO', '/assets/video/1xbet-registration-website.mp4');
+define('ONEXBET_APP_VIDEO', '/assets/video/1xbet-registration-app.mp4');
+define('MEGAPARI_WEBSITE_VIDEO', '/assets/video/megaPari-registration-app.mp4');
+define('MEGAPARI_APP_VIDEO', '/assets/video/megaPari-registration-app.mp4');
+define('HERO_VIDEO', '/assets/video/1xbet-registration-website.mp4'); // swap once a real intro exists
+define('HERO_POSTER', ''); // optional still shown before play; blank uses the clip's first frame
+
+// --- Deposit required to unlock the script (shown in the crash flow) ---
+define('DEPOSIT_AMOUNT', '12367 XAF');
 
 // --- Promo codes (blank until real codes exist — the pill only renders when set) ---
 define('ONEXBET_PROMO_CODE', '7DEVX');
-define('MELBET_PROMO_CODE', '7DEVX');
+define('MEGAPARI_PROMO_CODE', '7DEVX');
 
 // --- Telegram bot (forwards deposit-proof screenshot uploads, see upload-proof.php) ---
 define('TELEGRAM_BOT_TOKEN', ''); // set in config.local.php on the live server

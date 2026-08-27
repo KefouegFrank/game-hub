@@ -4,7 +4,7 @@
   const tiles = document.querySelectorAll('.platform-tile');
   const fileInput = document.getElementById('proof-file-input');
   const preview = document.getElementById('proof-preview');
-  const placeholder = document.getElementById('proof-upload-placeholder');
+  const uploadBox = document.getElementById('proof-upload-box');
   const removeBtn = document.getElementById('proof-remove-btn');
   const submitBtn = document.getElementById('proof-submit-btn');
   const statusEl = document.getElementById('proof-status');
@@ -28,8 +28,9 @@
     if (preview.src) URL.revokeObjectURL(preview.src);
     preview.src = URL.createObjectURL(file);
     preview.hidden = false;
-    if (placeholder) placeholder.hidden = true;
+    if (uploadBox) uploadBox.hidden = false;
     if (removeBtn) removeBtn.hidden = false;
+    submitBtn.hidden = false;
     submitBtn.removeAttribute('disabled');
     submitBtn.removeAttribute('aria-disabled');
   });
@@ -40,8 +41,9 @@
       fileInput.value = '';
       preview.hidden = true;
       preview.removeAttribute('src');
-      if (placeholder) placeholder.hidden = false;
+      if (uploadBox) uploadBox.hidden = true;
       removeBtn.hidden = true;
+      submitBtn.hidden = true;
       submitBtn.setAttribute('disabled', '');
       submitBtn.setAttribute('aria-disabled', 'true');
       statusEl.hidden = true;

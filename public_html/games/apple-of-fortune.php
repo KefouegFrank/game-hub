@@ -5,9 +5,7 @@ require __DIR__ . '/../includes/header.php';
 ?>
 
 <?php
-$gameMediaWebsite = '/assets/img/apple-of-fortune.jpeg';
-$gameMediaApp = '/assets/img/apple-of-fortune2.jpeg';
-$gameMediaAlt = 'Apple of Fortune gameplay screenshot';
+$gameMediaAlt = 'Registration walkthrough video';
 require __DIR__ . '/../includes/game-media.php';
 require __DIR__ . '/../includes/platform-buttons.php';
 require __DIR__ . '/../includes/pre-play-callout.php';

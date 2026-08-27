@@ -8,12 +8,17 @@
   --accent-a: #22d3ee;
   --accent-b: #d946ef;
   --accent-solid: #7c6cff;
+  --accent-green: #22c55e;
   --font-body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Orbitron", -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 * {
   box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 .visually-hidden {
@@ -265,18 +270,19 @@ h3,
 
 .hero-visual {
   position: relative;
-  max-width: 850px;
+  max-width: 900px;
   margin: 0 auto 40px;
-  aspect-ratio: 16 / 9;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, var(--bg-soft), var(--card));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 26px;
+  border-radius: 26px;
+  border: 1px solid rgba(124, 108, 255, 0.35);
+  background: linear-gradient(160deg, #1b1140 0%, #150c33 55%, #0d0722 100%);
+  box-shadow:
+    0 30px 80px rgba(76, 38, 175, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
 
+/* Slow colour drift in the frame around the clip. */
 .hero-visual::before {
   content: "";
   position: absolute;
@@ -287,15 +293,101 @@ h3,
     var(--accent-b),
     var(--accent-a)
   );
-  opacity: 0.18;
-  filter: blur(40px);
+  opacity: 0.14;
+  filter: blur(50px);
   animation: spin 12s linear infinite;
 }
 
-.hero-visual-mark {
+.hero-player {
   position: relative;
-  width: 96px;
-  height: 96px;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.hero-player-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  gap: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(0, 0, 0, 0.35)
+  );
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.hero-player.is-playing .hero-player-overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-player-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-player-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-player-mark {
+  width: 22px;
+  height: 22px;
+}
+
+.hero-play-btn {
+  grid-column: 1 / -1;
+  place-self: center;
+  width: 76px;
+  height: 76px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #d946ef);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 34px rgba(217, 70, 239, 0.45);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.hero-play-btn svg {
+  width: 34px;
+  height: 34px;
+  margin-left: 4px;
+}
+
+.hero-player-overlay:hover .hero-play-btn {
+  transform: scale(1.07);
+  box-shadow: 0 16px 40px rgba(217, 70, 239, 0.55);
 }
 
 @keyframes spin {
@@ -493,31 +585,33 @@ h3,
 }
 
 .game-media {
-  display: block;
-  max-width: 450px;
-  height: auto;
   margin: 30px auto 0;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--border);
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+  background: #000;
 }
 
-.game-media:hover {
-  border-color: var(--accent-solid);
-  box-shadow:
-    0 0 0 1px var(--accent-solid),
-    0 10px 32px rgba(124, 108, 255, 0.4),
-    0 0 24px rgba(34, 211, 238, 0.25);
+/* Website links play a landscape tutorial, app links a portrait one. */
+.game-media-landscape {
+  max-width: 450px;
+  aspect-ratio: 16 / 9;
 }
 
-.game-media img {
+/* Height-driven so a tall phone clip can't push the buttons off screen; the
+   width follows from the clip's ratio. */
+.game-media-portrait {
+  height: min(65vh, 520px);
+  width: fit-content;
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+}
+
+.game-media-video {
   width: 100%;
-  display: block;
   height: 100%;
-  object-fit: cover;
+  display: block;
+  object-fit: contain;
 }
 
 .platform-select {
@@ -568,21 +662,29 @@ h3,
 }
 
 .platform-btn.active {
-  border-color: var(--accent-a);
-  background: rgba(34, 211, 238, 0.15);
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  background: rgba(34, 197, 94, 0.12);
   box-shadow:
-    0 0 0 1px var(--accent-a),
-    0 0 16px rgba(34, 211, 238, 0.4);
+    0 0 0 1px var(--accent-green),
+    0 0 16px rgba(34, 197, 94, 0.35);
 }
 
 .platform-btn.active:hover {
-  background: rgba(34, 211, 238, 0.22);
+  background: rgba(34, 197, 94, 0.2);
 }
 
 .platform-btn-wide {
   width: 100%;
   text-decoration: none;
   margin-top: 10px;
+  border-color: rgba(34, 197, 94, 0.5);
+  color: var(--accent-green);
+}
+
+.platform-btn-wide:hover {
+  border-color: var(--accent-green);
+  background: rgba(34, 197, 94, 0.12);
 }
 
 .callout-box {
@@ -688,42 +790,48 @@ h3,
 }
 
 .promo-pill {
-  border: 1px solid var(--accent-a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 150px;
+  border: 1px solid #1f2937;
   border-radius: 10px;
-  padding: 8px 14px;
+  padding: 10px 16px;
   font-size: 0.85rem;
   color: var(--text);
-  background: rgba(34, 211, 238, 0.06);
+  background: #0f1117;
 }
 
-.promo-pill strong {
-  color: var(--accent-a);
+.promo-pill-label {
+  color: #34d399;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.promo-pill-label strong {
+  color: #facc15;
 }
 
 .promo-code {
-  background: none;
   border: none;
-  padding: 0;
-  margin: 0;
-  color: var(--accent-a);
-  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px 18px;
+  background: #22c55e;
+  color: #06210f;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
   cursor: pointer;
-  border-bottom: 1px dashed var(--accent-a);
-  transition:
-    color 0.15s ease,
-    border-color 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .promo-code:hover {
-  color: var(--text);
-  border-color: var(--text);
+  background: #16a34a;
 }
 
 .promo-code.copied {
-  color: #34d399;
-  border-color: #34d399;
+  background: #facc15;
 }
 
 .signup-rows .btn-block {
@@ -800,7 +908,7 @@ h3,
   width: 90vw;
   max-width: 360px;
   margin: auto;
-  padding: 28px 24px 24px;
+  padding: 20px 18px 24px;
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--accent-solid);
@@ -810,11 +918,45 @@ h3,
     0 12px 40px rgba(124, 108, 255, 0.45),
     0 0 30px rgba(34, 211, 238, 0.3);
   text-align: center;
+  opacity: 0;
+  translate: 0 8px;
+  transition:
+    opacity 0.18s ease,
+    translate 0.18s ease,
+    display 0.18s allow-discrete,
+    overlay 0.18s allow-discrete;
+}
+
+.modal-box[open] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@starting-style {
+  .modal-box[open] {
+    opacity: 0;
+    translate: 0 8px;
+  }
 }
 
 .modal-box::backdrop {
   background: rgba(5, 4, 12, 0.75);
   backdrop-filter: blur(3px);
+  opacity: 0;
+  transition:
+    opacity 0.18s ease,
+    display 0.18s allow-discrete,
+    overlay 0.18s allow-discrete;
+}
+
+.modal-box[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .modal-box[open]::backdrop {
+    opacity: 0;
+  }
 }
 
 .modal-box h3 {
@@ -916,7 +1058,7 @@ h3,
 
 .brand-pill-wide {
   width: 70%;
-  height: 40px;
+  height: 50px;
   gap: 18px;
 }
 
@@ -927,33 +1069,39 @@ h3,
   padding: 0 10px;
   color: #38bdf8;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 2.5rem;
   flex-shrink: 0;
   animation: point-nudge 1.1s ease-in-out infinite;
 }
 
+/* Fixed box so every brand gets the same tile regardless of its logo's aspect ratio. */
 .brand-pill-wide .brand-pill-logo {
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: auto;
+  flex-shrink: 0;
   border-radius: 8px;
   padding: 4px;
   overflow: hidden;
   transition: box-shadow 0.15s ease;
 }
 
+/* contain + max-* keeps a tall logo inside the tile instead of overflowing into the crop. */
 .brand-pill-wide .brand-pill-logo img {
   flex: none;
-  width: 150px;
+  width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
   border-radius: 8px;
 }
 
-.brand-pill-wide.active .brand-pill-logo,
-.brand-pill-wide:hover .brand-pill-logo {
+.brand-pill-wide.active .brand-pill-logo {
   box-shadow:
-    0 0 0 2px var(--accent-a),
-    0 0 8px rgba(34, 211, 238, 0.5);
+    0 0 0 2px #f59e0b,
+    0 0 12px rgba(245, 158, 11, 0.45);
 }
 
 .signup-form {
@@ -989,17 +1137,17 @@ h3,
   opacity: 0.5;
   cursor: not-allowed;
   padding: 20px 14px;
-  margin-top: 25px;
-  max-width: 300px;
+  margin-top: 8px;
+  width: 100%;
   align-self: center;
   border-radius: 10px;
 }
 
-/* Anchors don't support :disabled, so [disabled] covers #continue-btn in code-reveal-step.php */
 .btn[disabled] {
-  opacity: 0.5;
+  opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
+  font-size: 1rem;
 }
 
 .signup-privacy-note {
@@ -1181,11 +1329,17 @@ h3,
   max-width: 580px;
   margin: 20px auto;
   padding: 14px 18px;
-  border: 1px solid var(--accent-solid);
-  border-radius: 12px;
-  background: rgba(124, 108, 255, 0.12);
-  color: var(--text);
-  font-size: 0.85rem;
+  border: 1px solid #3b82f6;
+  border-radius: 10px;
+  background: #1e3a8a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.deposit-amount {
+  color: #facc15;
 }
 
 .deposit-warning svg {
@@ -1195,7 +1349,7 @@ h3,
 }
 
 .proof-panel {
-  max-width: 450px;
+  max-width: 570px;
   margin: 30px auto 0;
   padding: 20px;
   border: 1px solid var(--border);
@@ -1222,8 +1376,8 @@ h3,
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 12px;
+  gap: 10px;
+  padding: 14px 12px;
   background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -1231,20 +1385,42 @@ h3,
   color: var(--text);
   font-weight: 600;
   font-size: 0.85rem;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .platform-tile img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  max-width: 140px;
+  height: 46px;
   object-fit: contain;
   border-radius: 8px;
 }
 
+.platform-tile:hover {
+  border-color: #6b7280;
+  background: #2b2f3d;
+  animation: tile-nudge 0.45s ease-in-out;
+}
+
+@keyframes tile-nudge {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  30% {
+    rotate: -1.4deg;
+  }
+  65% {
+    rotate: 1.4deg;
+  }
+}
+
 .platform-tile.active {
   border-color: var(--accent-a);
-  box-shadow:
-    0 0 0 1px var(--accent-a),
-    0 0 16px rgba(34, 211, 238, 0.4);
+  background: rgba(34, 211, 238, 0.15);
+  box-shadow: 0 0 0 1px var(--accent-a);
 }
 
 .proof-field-label {
@@ -1262,29 +1438,15 @@ h3,
 
 .proof-example-btn {
   align-self: center;
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 0.85rem;
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 7px 16px;
 }
 
-.proof-upload-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 4 / 3;
-  border: 1px dashed var(--border);
-  border-radius: 10px;
-  color: var(--muted);
-}
-
-.proof-upload-placeholder[hidden] {
-  display: none;
-}
-
-.proof-upload-placeholder svg {
-  width: 40px;
-  height: 40px;
+.proof-example-btn:hover {
+  background: #1d4ed8;
 }
 
 .proof-upload-box {
@@ -1297,10 +1459,6 @@ h3,
   object-fit: cover;
   border-radius: 10px;
   display: block;
-}
-
-.proof-preview[hidden] {
-  display: none;
 }
 
 .proof-remove-btn {
@@ -1321,10 +1479,6 @@ h3,
   cursor: pointer;
 }
 
-.proof-remove-btn[hidden] {
-  display: none;
-}
-
 .proof-remove-btn:hover {
   background: rgba(5, 4, 12, 0.9);
 }
@@ -1334,9 +1488,15 @@ h3,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #14161f;
+  border: 1px solid #262b3a;
   color: var(--text);
+}
+
+.upload-btn:hover {
+  border-color: #3b4257;
 }
 
 .upload-btn svg {
@@ -1366,13 +1526,45 @@ h3,
 
 /* Screenshot example modal */
 
+/* Plainer than the other modals: the reference card is neutral chrome around a
+   screenshot, so the violet ring the rest of the site uses would fight it. */
+.example-modal {
+  max-width: 370px;
+  padding: 14px;
+  overflow: visible;
+  border-color: #2a2b33;
+  background: #16161c;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Sits proud of the corner like the reference, so it never covers the image. */
+.example-modal-close {
+  top: -16px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #16161c;
+  background: #e23b3b;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.example-modal-close:hover {
+  background: #c62f2f;
+  border-color: #16161c;
+}
+
+/* Height-capped rather than a fixed ratio: the samples are full phone
+   screenshots, and cropping one loses whatever it's pointing at. */
 .example-modal-frame {
   position: relative;
-  aspect-ratio: 9 / 16;
-  max-width: 220px;
-  margin: 0 auto 16px;
-  border-radius: 12px;
+  height: min(58vh, 500px);
+  max-width: 100%;
+  margin: 0 auto 14px;
+  border-radius: 10px;
   overflow: hidden;
+  background: #fff;
   transition: opacity 0.15s ease;
 }
 
@@ -1383,12 +1575,8 @@ h3,
 .example-modal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
-}
-
-.example-modal-img[hidden] {
-  display: none;
 }
 
 .example-modal-placeholder {
@@ -1399,16 +1587,12 @@ h3,
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px dashed var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
+  background: var(--bg-soft);
   color: var(--muted);
   font-size: 0.8rem;
   text-align: center;
   padding: 10px;
-}
-
-.example-modal-placeholder[hidden] {
-  display: none;
 }
 
 .example-modal-placeholder svg {
@@ -1419,24 +1603,35 @@ h3,
 .example-modal-pills {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .example-pill {
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg-soft);
-  color: var(--text);
-  font-size: 0.8rem;
-  font-weight: 600;
+  min-width: 120px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.example-pill:hover {
+  border-color: rgba(var(--brand-glow), 0.6);
 }
 
 .example-pill.active {
-  border-color: var(--accent-a);
-  color: var(--accent-a);
-  box-shadow: 0 0 0 1px var(--accent-a);
+  border-color: rgb(var(--brand-glow));
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgb(var(--brand-glow)),
+    0 0 16px rgba(var(--brand-glow), 0.5);
 }
 
 @media (max-width: 480px) {
@@ -1456,4 +1651,243 @@ h3,
     width: 18px;
     height: 18px;
   }
+  .platform-btn {
+    padding: 10px 8px;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
+  .hero-visual {
+    padding: 12px;
+    border-radius: 18px;
+  }
+  .hero-play-btn {
+    width: 58px;
+    height: 58px;
+  }
+  .hero-play-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual::before {
+    animation: none;
+  }
+  .platform-tile:hover {
+    animation: none;
+  }
+  .modal-box,
+  .modal-box::backdrop,
+  .example-modal-frame {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* Crash flow — the screen replicated from the reference design */
+
+.crash-flow {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 0 10px;
+  text-align: center;
+}
+
+.telegram-strip {
+  display: block;
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.telegram-strip strong {
+  color: #facc15;
+}
+
+.crash-welcome {
+  max-width: 560px;
+  margin: 50px auto 30px auto;
+  font-family: var(--font-body);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.brand-video-select {
+  max-width: none;
+}
+
+.brand-video-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+/* Each brand keeps its own colour; the active one lights up in that colour
+   rather than the green used by the platform picker on the game pages. */
+.brand-video-btn {
+  gap: 10px;
+  padding: 8px 22px 8px 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.brand-onexbet {
+  --brand-from: #1e3a8a;
+  --brand-to: #2563eb;
+  --brand-glow: 59, 130, 246;
+}
+
+.brand-megapari {
+  --brand-from: #3f0d18;
+  --brand-to: #6b1224;
+  --brand-glow: 239, 68, 68;
+}
+
+.brand-video-btn:hover {
+  background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  border-color: rgba(var(--brand-glow), 0.6);
+}
+
+.brand-video-btn.active,
+.brand-video-btn.active:hover {
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  border-color: rgb(var(--brand-glow));
+  box-shadow:
+    0 0 0 1px rgb(var(--brand-glow)),
+    0 0 18px rgba(var(--brand-glow), 0.55);
+}
+
+.brand-video-chip {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 30px;
+  border-radius: 7px;
+  background: #0b0b12;
+  overflow: hidden;
+}
+
+.brand-video-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Pinned frame: brand clips differ in shape, and the layout can't jump between
+   them mid-flow, so whatever loads letterboxes inside this box. */
+.game-media-fixed {
+  height: auto;
+  width: min(320px, 100%);
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+}
+
+.crash-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 570px;
+  margin: 26px auto 0;
+}
+
+.btn-orange {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.btn-orange:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ea580c, #f97316);
+}
+
+.btn-green {
+  background: #22c55e;
+  border: none;
+  color: #06210f;
+}
+
+.btn-green:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.crash-flow .proof-panel {
+  border-color: #22c55e;
+  background: #0d0f18;
+  text-align: center;
+}
+
+.crash-flow .signup-rows {
+  max-width: 570px;
+}
+
+.crash-flow .signup-row {
+  display: grid;
+  grid-template-columns: 40px 160px 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.crash-flow .promo-pill {
+  justify-self: end;
+}
+
+.proof-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.proof-field .proof-field-label {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.pointer-icon-down {
+  width: 26px;
+  display: block;
+  margin: 4px auto 0;
+  rotate: 90deg;
+  animation-name: point-nudge-down;
+}
+
+@keyframes point-nudge-down {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 5px;
+  }
+}
+
+/* The reference sets this flow in plain sans, not the display face used for
+   buttons elsewhere on the site. */
+.crash-flow .btn,
+.crash-flow .proof-panel-heading,
+.crash-welcome {
+  font-family: var(--font-body);
+}
+
+.crash-flow .field-input {
+  background: #0f1117;
+}
+
+.crash-flow .platform-tile.active {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.15);
+  box-shadow: 0 0 0 1px #22c55e;
 }

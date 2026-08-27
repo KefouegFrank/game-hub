@@ -4,19 +4,26 @@ $pageTitle = 'Crash — how it works | ' . SITE_NAME;
 require __DIR__ . '/../includes/header.php';
 ?>
 
-<div id="reveal-section-before">
-  <?php
-  $gameMediaWebsite = '/assets/img/crash.jpg';
-  $gameMediaAlt = 'Crash gameplay screenshot';
-  require __DIR__ . '/../includes/game-media.php';
-  require __DIR__ . '/../includes/brand-buttons.php';
-  require __DIR__ . '/../includes/code-reveal-step.php';
-  ?>
-</div>
+<section class="crash-flow">
+  <div id="crash-intro">
+    <?php require __DIR__ . '/../includes/telegram-strip.php'; ?>
+    <?php
+    $gameMediaSrc = MEGAPARI_APP_VIDEO;
+    $gameMediaFixed = 'portrait';
+    $gameMediaAlt = 'Registration walkthrough video';
+    require __DIR__ . '/../includes/game-media.php';
+    require __DIR__ . '/../includes/brand-buttons.php';
+    ?>
 
-<div id="reveal-section-after" hidden>
-  <?php require __DIR__ . '/../includes/deposit-proof-panel.php'; ?>
-</div>
+    <h2 class="crash-welcome"><?= htmlspecialchars(t('crash_welcome')) ?></h2>
+  </div>
+
+  <div id="crash-reveal" hidden>
+    <?php require __DIR__ . '/../includes/deposit-proof-panel.php'; ?>
+  </div>
+
+  <?php require __DIR__ . '/../includes/crash-actions.php'; ?>
+</section>
 
 <?php require __DIR__ . '/../includes/registration-guide-cta.php'; ?>
 

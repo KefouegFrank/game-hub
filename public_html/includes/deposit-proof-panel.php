@@ -1,11 +1,11 @@
 <?php
-// Section B: shown after "Reveal bonus code" swaps away #reveal-section-before.
-// Both brands' promo codes, plus the deposit-proof upload form
-// (see assets/js/proof-upload.js and public_html/upload-proof.php).
+// Section B of the crash flow: what to deposit, both brands' promo codes, and
+// the deposit-proof upload form (see assets/js/proof-upload.js and
+// public_html/upload-proof.php).
 ?>
 <div class="deposit-warning">
   <?= icon_warning() ?>
-  <span><?= htmlspecialchars(t('deposit_warning_text')) ?></span>
+  <span><?= sprintf(htmlspecialchars(t('deposit_warning_text')), '<strong class="deposit-amount">' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>') ?></span>
 </div>
 
 <div class="signup-rows">
@@ -16,10 +16,10 @@
   $rowCode = ONEXBET_PROMO_CODE;
   require __DIR__ . '/promo-row.php';
 
-  $rowBrandName = 'Melbet';
-  $rowLogo = '/assets/img/mailbet-logo.png';
-  $rowUrl = MELBET_WEBSITE_URL;
-  $rowCode = MELBET_PROMO_CODE;
+  $rowBrandName = 'MegaPari';
+  $rowLogo = '/assets/img/megapari-logo.png';
+  $rowUrl = MEGAPARI_WEBSITE_URL;
+  $rowCode = MEGAPARI_PROMO_CODE;
   require __DIR__ . '/promo-row.php';
   ?>
 </div>
@@ -32,24 +32,23 @@
       <img src="/assets/img/Logo_1xBet.png" alt="1xBet">
       <span>1xBet</span>
     </button>
-    <button type="button" class="platform-tile" data-platform="melbet">
-      <img src="/assets/img/mailbet-logo.png" alt="Melbet">
-      <span>Melbet</span>
+    <button type="button" class="platform-tile" data-platform="megapari">
+      <img src="/assets/img/megapari-logo.png" alt="MegaPari">
+      <span>MegaPari</span>
     </button>
   </div>
 
-  <label for="proof-account-id" class="proof-field-label"><?= htmlspecialchars(t('deposit_id_label')) ?></label>
-  <input type="text" id="proof-account-id" class="field-input" placeholder="1670000000">
-
-  <p class="proof-upload-instruction"><?= htmlspecialchars(t('upload_instruction')) ?></p>
-
-  <button type="button" id="example-modal-open-btn" class="btn proof-example-btn"><?= htmlspecialchars(t('see_example_cta')) ?></button>
-
-  <div class="proof-upload-box">
-    <img id="proof-preview" class="proof-preview" alt="" hidden>
-    <div id="proof-upload-placeholder" class="proof-upload-placeholder"><?= icon_image_placeholder() ?></div>
-    <button type="button" id="proof-remove-btn" class="proof-remove-btn" hidden aria-label="<?= htmlspecialchars(t('remove_image_label')) ?>">&times;</button>
+  <div class="proof-field">
+    <label for="proof-account-id" class="proof-field-label"><?= htmlspecialchars(t('deposit_id_label')) ?>:</label>
+    <input type="text" id="proof-account-id" class="field-input" placeholder="1670000000">
   </div>
+
+  <p class="proof-upload-instruction">
+    <?= htmlspecialchars(t('upload_instruction')) ?>
+    <img class="pointer-icon pointer-icon-down" src="/assets/img/emoji-point-right.svg" alt="">
+  </p>
+
+  <button type="button" id="example-modal-open-btn" class="btn proof-example-btn" data-modal-open="#screenshot-example-modal"><?= htmlspecialchars(t('see_example_cta')) ?></button>
 
   <label class="btn upload-btn" for="proof-file-input">
     <?= icon_upload() ?>
@@ -57,7 +56,12 @@
   </label>
   <input type="file" id="proof-file-input" accept="image/*" hidden>
 
-  <button type="button" id="proof-submit-btn" class="btn btn-gradient btn-block btn-lg" disabled aria-disabled="true"><?= htmlspecialchars(t('upload_submit_cta')) ?></button>
+  <div class="proof-upload-box" id="proof-upload-box" hidden>
+    <img id="proof-preview" class="proof-preview" alt="" hidden>
+    <button type="button" id="proof-remove-btn" class="proof-remove-btn" hidden aria-label="<?= htmlspecialchars(t('remove_image_label')) ?>">&times;</button>
+  </div>
+
+  <button type="button" id="proof-submit-btn" class="btn btn-gradient btn-block btn-lg" hidden disabled aria-disabled="true"><?= htmlspecialchars(t('upload_submit_cta')) ?></button>
 
   <p id="proof-status" class="proof-status" hidden data-success-text="<?= htmlspecialchars(t('upload_success_text')) ?>" data-error-text="<?= htmlspecialchars(t('upload_error_text')) ?>"></p>
 </div>

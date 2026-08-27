@@ -36,7 +36,7 @@ if (!isset($allowedMimes[$mime])) {
 }
 
 $platform = $_POST['platform'] ?? '';
-$platformLabel = $platform === 'melbet' ? 'Melbet' : '1xBet';
+$platformLabel = $platform === 'megapari' ? 'MegaPari' : '1xBet';
 $accountId = trim($_POST['account_id'] ?? '');
 
 $caption = "New deposit proof\nPlatform: {$platformLabel}";

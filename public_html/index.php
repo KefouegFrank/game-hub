@@ -6,7 +6,19 @@ require __DIR__ . '/includes/header.php';
 
 <section class="hero">
   <div class="hero-visual">
-    <?= icon_logo_mark('hero-visual-mark', 'logoGradHero', '1.5') ?>
+    <div class="hero-player" id="hero-player">
+      <video id="hero-video" class="hero-video" src="<?= htmlspecialchars(HERO_VIDEO) ?>"<?= HERO_POSTER === '' ? '' : ' poster="' . htmlspecialchars(HERO_POSTER) . '"' ?> playsinline preload="metadata"></video>
+      <div class="hero-player-overlay">
+        <span class="hero-player-title"><?= htmlspecialchars(t('hero_video_title')) ?></span>
+        <span class="hero-player-brand">
+          <?= icon_logo_mark('hero-player-mark', 'logoGradHero', '2.5') ?>
+          <?= htmlspecialchars(SITE_NAME) ?>
+        </span>
+        <button type="button" class="hero-play-btn" id="hero-play-btn" aria-label="<?= htmlspecialchars(t('hero_play_label')) ?>">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.5 18 12l-9 5.5Z" fill="currentColor" /></svg>
+        </button>
+      </div>
+    </div>
   </div>
   <p class="hero-lede"><img src="/assets/img/emoji-money-mouth.svg" alt="" class="emoji-icon"> <?= htmlspecialchars(t('hero_title')) ?></p>
   <p><?= htmlspecialchars(SITE_TAGLINE) ?></p>

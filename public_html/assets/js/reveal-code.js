@@ -1,15 +1,22 @@
-// Swaps the platform-picker view for the deposit-proof panel — see
-// includes/deposit-proof-panel.php. Not a modal or navigation, just
-// hiding one section and showing its sibling.
+// "Generate activation code" swaps the intro (video + brand picker) for the
+// deposit/proof section, then hands the flow over to Next — see
+// includes/crash-actions.php.
 (() => {
-  const btn = document.getElementById('code-reveal-btn');
-  const before = document.getElementById('reveal-section-before');
-  const after = document.getElementById('reveal-section-after');
-  if (!btn || !before || !after) return;
+  const generateBtn = document.getElementById('code-reveal-btn');
+  const nextBtn = document.getElementById('crash-next-btn');
+  const reveal = document.getElementById('crash-reveal');
+  const intro = document.getElementById('crash-intro');
+  if (!generateBtn || !reveal) return;
 
-  btn.addEventListener('click', () => {
-    before.hidden = true;
-    after.hidden = false;
-    after.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  generateBtn.addEventListener('click', () => {
+    if (intro) intro.hidden = true;
+    reveal.hidden = false;
+    generateBtn.setAttribute('disabled', '');
+    generateBtn.setAttribute('aria-disabled', 'true');
+    if (nextBtn) {
+      nextBtn.removeAttribute('disabled');
+      nextBtn.removeAttribute('aria-disabled');
+    }
+    reveal.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 })();

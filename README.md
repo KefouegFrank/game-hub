@@ -37,7 +37,7 @@ Update `public_html/includes/config.php` with your local DB credentials.
 ```
 public_html/          -> document root (this is what you'd upload to cPanel's public_html/)
   index.php            homepage
-  games/               one page per game (crash.php, apple-of-fortune.php, thimbles.php)
+  scrip/               one page per game (crash.php, apple-of-fortune.php, thimbles.php)
   includes/            shared header/footer/config
   assets/              css, js, images
   lang/                simple JSON translation files
