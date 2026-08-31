@@ -19,7 +19,7 @@ require __DIR__ . '/../includes/header.php';
   <div class="callout-warn">
     <?= icon_warning() ?>
     <span><strong><?= htmlspecialchars(t('important_label')) ?>:</strong>
-      <?= sprintf(htmlspecialchars(t('thimbles_deposit_note')), '<strong>' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>') ?></span>
+      <?= sprintf(htmlspecialchars(t('deposit_note')), '<strong>' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>') ?></span>
   </div>
 
   <div class="signup-rows">
@@ -45,6 +45,8 @@ require __DIR__ . '/../includes/header.php';
 
 <?php require __DIR__ . '/../includes/registration-check-modal.php'; ?>
 
+
+<?php require __DIR__ . '/../includes/registration-guide-cta.php'; ?>
 
 <?php require __DIR__ . '/../includes/game-carousel.php'; ?>
 

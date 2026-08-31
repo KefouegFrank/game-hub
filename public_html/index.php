@@ -59,4 +59,6 @@ require __DIR__ . '/includes/header.php';
   </a>
 </div>
 
+<?php require __DIR__ . '/includes/registration-guide-cta.php'; ?>
+
 <?php require __DIR__ . '/includes/footer.php'; ?>
