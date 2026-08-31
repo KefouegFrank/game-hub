@@ -1889,6 +1889,28 @@ h3,
   font-weight: 700;
 }
 
+.proof-field-hint {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.field-error {
+  margin: -5px 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f87171;
+  text-align: left;
+}
+
+.field-input.field-invalid {
+  border-color: #f87171;
+}
+
+.field-input.field-invalid:focus {
+  border-color: #f87171;
+}
+
 .pointer-icon-down {
   width: 26px;
   display: block;

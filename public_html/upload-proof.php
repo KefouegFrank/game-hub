@@ -39,10 +39,13 @@ $platform = $_POST['platform'] ?? '';
 $platformLabel = $platform === 'megapari' ? 'MegaPari' : '1xBet';
 $accountId = trim($_POST['account_id'] ?? '');
 
-$caption = "New deposit proof\nPlatform: {$platformLabel}";
-if ($accountId !== '') {
-    $caption .= "\nAccount ID: {$accountId}";
+// Same 8-10 digit numeric format the client enforces (see assets/js/proof-upload.js) —
+// checked again here since a request can hit this endpoint without running that JS.
+if (!preg_match('/^\d{8,10}$/', $accountId)) {
+    respond(false, 'Enter a valid account ID (8 to 10 digits) before submitting.');
 }
+
+$caption = "New deposit proof\nPlatform: {$platformLabel}\nAccount ID: {$accountId}";
 
 $curlFile = new CURLFile($file['tmp_name'], $mime, 'proof.' . $allowedMimes[$mime]);
 

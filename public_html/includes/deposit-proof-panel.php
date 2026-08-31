@@ -40,7 +40,9 @@
 
   <div class="proof-field">
     <label for="proof-account-id" class="proof-field-label"><?= htmlspecialchars(t('deposit_id_label')) ?>:</label>
-    <input type="text" id="proof-account-id" class="field-input" placeholder="1670000000">
+    <input type="text" id="proof-account-id" class="field-input" placeholder="1670000000" inputmode="numeric" pattern="[0-9]{8,10}" maxlength="10" autocomplete="off" aria-describedby="proof-id-hint proof-id-error" aria-invalid="false">
+    <p id="proof-id-hint" class="proof-field-hint"><?= htmlspecialchars(t('id_hint')) ?></p>
+    <p id="proof-id-error" class="field-error" hidden role="alert"><?= htmlspecialchars(t('id_invalid_error')) ?></p>
   </div>
 
   <p class="proof-upload-instruction">

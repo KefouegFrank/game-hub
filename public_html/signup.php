@@ -29,7 +29,8 @@ require __DIR__ . '/includes/header.php';
 
   <form class="signup-form" onsubmit="return false;">
     <label for="account-id" class="visually-hidden"><?= htmlspecialchars(t('signup_id_label')) ?></label>
-    <input type="text" id="account-id" class="field-input" placeholder="<?= htmlspecialchars(t('signup_id_label')) ?>">
+    <input type="text" id="account-id" class="field-input" placeholder="<?= htmlspecialchars(t('signup_id_label')) ?>" inputmode="numeric" pattern="[0-9]{8,10}" maxlength="10" autocomplete="off" aria-describedby="account-id-error" aria-invalid="false">
+    <p id="account-id-error" class="field-error" hidden role="alert"><?= htmlspecialchars(t('id_invalid_error')) ?></p>
 
     <label for="server-select"><?= htmlspecialchars(t('signup_server_label')) ?></label>
     <select id="server-select" class="field-input">

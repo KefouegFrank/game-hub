@@ -1,5 +1,9 @@
-// Deposit-proof panel: platform tile picker, file preview, and submitting
-// to upload-proof.php, which forwards the image to Telegram.
+// Deposit-proof panel: platform tile picker, file preview, ID validation, and
+// submitting to upload-proof.php, which forwards the image to Telegram.
+//
+// The ID format (8-10 digits) matches the account-number scheme 1xBet and
+// MegaPari both use — MegaPari is a white-label on the same 1xBet-network
+// backend, so it shares the numeric account ID format.
 (() => {
   const tiles = document.querySelectorAll('.platform-tile');
   const fileInput = document.getElementById('proof-file-input');
@@ -9,8 +13,33 @@
   const submitBtn = document.getElementById('proof-submit-btn');
   const statusEl = document.getElementById('proof-status');
   const idInput = document.getElementById('proof-account-id');
+  const idError = document.getElementById('proof-id-error');
   const panel = document.getElementById('proof-form-panel');
   if (!fileInput || !submitBtn) return;
+
+  const ID_PATTERN = /^\d{8,10}$/;
+  const isIdValid = () => !!idInput && ID_PATTERN.test(idInput.value.trim());
+
+  function setIdError(show) {
+    if (!idInput) return;
+    idInput.classList.toggle('field-invalid', show);
+    idInput.setAttribute('aria-invalid', show ? 'true' : 'false');
+    if (idError) idError.hidden = !show;
+  }
+
+  // Silent until the field has been touched — nobody wants an error before
+  // they've typed anything.
+  let idTouched = false;
+
+  if (idInput) {
+    idInput.addEventListener('blur', () => {
+      idTouched = true;
+      setIdError(idInput.value.trim() !== '' && !isIdValid());
+    });
+    idInput.addEventListener('input', () => {
+      if (idTouched) setIdError(idInput.value.trim() !== '' && !isIdValid());
+    });
+  }
 
   let activePlatform = 'onexbet';
 
@@ -60,6 +89,13 @@
   submitBtn.addEventListener('click', async () => {
     const file = fileInput.files[0];
     if (!file) return;
+
+    idTouched = true;
+    if (!isIdValid()) {
+      setIdError(true);
+      idInput.focus();
+      return;
+    }
 
     submitBtn.setAttribute('disabled', '');
     submitBtn.setAttribute('aria-disabled', 'true');
