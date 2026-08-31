@@ -30,6 +30,8 @@
 <script src="/assets/js/numeric-input.js?v=<?= filemtime(__DIR__ . '/../assets/js/numeric-input.js') ?>"></script>
 <script src="/assets/js/proof-upload.js?v=<?= filemtime(__DIR__ . '/../assets/js/proof-upload.js') ?>"></script>
 <script src="/assets/js/signup-form.js?v=<?= filemtime(__DIR__ . '/../assets/js/signup-form.js') ?>"></script>
+<script src="/assets/js/crash-math.js?v=<?= filemtime(__DIR__ . '/../assets/js/crash-math.js') ?>"></script>
+<script src="/assets/js/crash-forecast.js?v=<?= filemtime(__DIR__ . '/../assets/js/crash-forecast.js') ?>"></script>
 <script src="/assets/js/script.js?v=<?= filemtime(__DIR__ . '/../assets/js/script.js') ?>"></script>
 </body>
 </html>

@@ -75,5 +75,11 @@
   "example_modal_caption_megapari": "Ejemplo de captura — MegaPari",
   "remove_image_label": "Quitar imagen",
   "disclosure_text": "",
-  "footer_note": "Los juegos de azar implican riesgo. Nada en este sitio garantiza ganancias. Juega con responsabilidad."
+  "footer_note": "Los juegos de azar implican riesgo. Nada en este sitio garantiza ganancias. Juega con responsabilidad.",
+  "script_page_title": "Kit de Crash",
+  "forecast_next": "PRÓXIMA RONDA",
+  "forecast_refresh": "Actualizar predicciones",
+  "forecast_starts_in": "Empieza en",
+  "forecast_running": "En curso",
+  "forecast_loading": "Analizando rondas…"
 }

@@ -1,8 +1,8 @@
 // Signup page. Start unlocks only once the ID matches the 8-10 digit account
 // format 1xBet and MegaPari both use (same rule as assets/js/proof-upload.js)
-// and a country is picked. Clicking it opens the script-server modal, which
-// spins and then reports the server full — the simulation page it would hand
-// off to doesn't exist yet. See includes/script-server-modal.php.
+// and a country is picked. The first two attempts hit a busy script server
+// (see includes/script-server-modal.php); the third gets through to the crash
+// toolkit. The counter persists so reloading doesn't reset progress.
 (() => {
   const startBtn = document.getElementById('signup-start-btn');
   const idInput = document.getElementById('account-id');
@@ -15,6 +15,28 @@
   if (!startBtn) return;
 
   const CONNECT_MS = 2600;
+  const ATTEMPTS_REQUIRED = 3;
+  const ATTEMPT_KEY = 'script-attempts';
+  const TOOLKIT_URL = '/script.php';
+
+  function attempts() {
+    try {
+      return Number(localStorage.getItem(ATTEMPT_KEY)) || 0;
+    } catch {
+      return 0; // storage blocked — every click counts as the first
+    }
+  }
+
+  function recordAttempt() {
+    const next = attempts() + 1;
+    try {
+      localStorage.setItem(ATTEMPT_KEY, String(next));
+    } catch {
+      /* nothing to do; the visitor just retries */
+    }
+    return next;
+  }
+
   const ID_PATTERN = /^\d{8,10}$/;
   const isIdValid = () => !!idInput && ID_PATTERN.test(idInput.value.trim());
   const hasCountry = () => !!serverSelect && serverSelect.value !== '';
@@ -70,12 +92,18 @@
       return;
     }
 
+    const attempt = recordAttempt();
+
     startBtn.disabled = true;
     startBtn.classList.add('is-loading');
     setModalState('connecting');
     if (modal) Modal.open(modal);
 
     setTimeout(() => {
+      if (attempt >= ATTEMPTS_REQUIRED) {
+        window.location.href = TOOLKIT_URL;
+        return;
+      }
       startBtn.classList.remove('is-loading');
       setModalState('busy');
       refreshStartState(); // let them try again once it's reported as full

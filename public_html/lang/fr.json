@@ -75,5 +75,11 @@
   "example_modal_caption_megapari": "Exemple de capture — MegaPari",
   "remove_image_label": "Retirer l'image",
   "disclosure_text": "",
-  "footer_note": "Les jeux d'argent comportent des risques. Rien sur ce site ne garantit des gains. Jouez de façon responsable."
+  "footer_note": "Les jeux d'argent comportent des risques. Rien sur ce site ne garantit des gains. Jouez de façon responsable.",
+  "script_page_title": "Boîte à outils Crash",
+  "forecast_next": "PROCHAIN TOUR",
+  "forecast_refresh": "Actualiser les prédictions",
+  "forecast_starts_in": "Départ dans",
+  "forecast_running": "En cours",
+  "forecast_loading": "Analyse en cours…"
 }
