@@ -45,9 +45,17 @@ define('MEGAPARI_PROMO_CODE', 'RBOSS1');
 // --- Credentials ---
 // Loaded from outside the web root (config/secrets.php, gitignored) so a PHP
 // handler failure can't serve them as plaintext. See config/secrets.example.php.
-$secretsFile = __DIR__ . '/../../config/secrets.php';
-if (is_readable($secretsFile)) {
-    require_once $secretsFile;
+// Two layouts to satisfy: local dev, where the docroot is public_html itself, and
+// an addon domain, where counting ../ up from here stops inside public_html.
+$home = getenv('HOME');
+foreach (array_filter([
+    __DIR__ . '/../../config/secrets.php',
+    $home ? $home . '/config/secrets.php' : null,
+]) as $secretsFile) {
+    if (is_readable($secretsFile)) {
+        require_once $secretsFile;
+        break;
+    }
 }
 
 // Blank defaults keep the site rendering if secrets aren't deployed yet — the

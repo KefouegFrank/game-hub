@@ -20,18 +20,30 @@ function rate_limit_client_key(): string {
 }
 
 function rate_limit_dir(): ?string {
-    $dir = __DIR__ . '/../../storage/ratelimit';
-    if (!is_dir($dir)) {
-        @mkdir($dir, 0700, true);
-    }
-    if (is_dir($dir) && is_writable($dir)) {
+    static $dir = false;
+    if ($dir !== false) {
         return $dir;
     }
-    $fallback = sys_get_temp_dir() . '/gameshub-ratelimit';
-    if (!is_dir($fallback)) {
-        @mkdir($fallback, 0700, true);
+
+    // The repo-relative path is only reused when it already exists: as an addon
+    // domain it resolves inside public_html, where counters would be web-readable.
+    $local = __DIR__ . '/../../storage/ratelimit';
+    $home = getenv('HOME');
+    $candidates = array_filter([
+        is_dir($local) ? $local : null,
+        $home ? $home . '/storage/ratelimit' : null,
+        sys_get_temp_dir() . '/gameshub-ratelimit',
+    ]);
+
+    foreach ($candidates as $path) {
+        if (!is_dir($path)) {
+            @mkdir($path, 0700, true);
+        }
+        if (is_dir($path) && is_writable($path)) {
+            return $dir = $path;
+        }
     }
-    return (is_dir($fallback) && is_writable($fallback)) ? $fallback : null;
+    return $dir = null;
 }
 
 /**
