@@ -38,6 +38,27 @@ require __DIR__ . '/includes/header.php';
       <option value="ng">🇳🇬 Nigeria</option>
       <option value="gh">🇬🇭 Ghana</option>
       <option value="ci">🇨🇮 Côte d'Ivoire</option>
+      <option value="ke">🇰🇪 Kenya</option>
+      <option value="ug">🇺🇬 Uganda</option>
+      <option value="za">🇿🇦 South Africa</option>
+      <option value="cd">🇨🇩 DR Congo</option>
+      <option value="sn">🇸🇳 Senegal</option>
+      <option value="zm">🇿🇲 Zambia</option>
+      <option value="tz">🇹🇿 Tanzania</option>
+      <option value="bj">🇧🇯 Benin</option>
+      <option value="tg">🇹🇬 Togo</option>
+      <option value="ml">🇲🇱 Mali</option>
+      <option value="bf">🇧🇫 Burkina Faso</option>
+      <option value="gn">🇬🇳 Guinea</option>
+      <option value="ga">🇬🇦 Gabon</option>
+      <option value="eg">🇪🇬 Egypt</option>
+      <option value="ma">🇲🇦 Morocco</option>
+      <option value="dz">🇩🇿 Algeria</option>
+      <option value="in">🇮🇳 India</option>
+      <option value="bd">🇧🇩 Bangladesh</option>
+      <option value="pk">🇵🇰 Pakistan</option>
+      <option value="np">🇳🇵 Nepal</option>
+      <option value="lk">🇱🇰 Sri Lanka</option>
       <option value="other">🌍 Other</option>
     </select>
 
