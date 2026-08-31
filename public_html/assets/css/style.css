@@ -517,6 +517,9 @@ h3,
 .btn-block {
   display: block;
   width: 100%;
+  padding: 20px 0;
+  border-radius: 10px;
+  margin-top: 14px;
 }
 
 .btn-lg {
@@ -2069,4 +2072,49 @@ h3,
     justify-self: stretch;
     min-width: 0;
   }
+}
+
+/* Start button + script-server modal (see assets/js/signup-form.js) */
+
+.btn-spinner {
+  display: none;
+  width: 15px;
+  height: 15px;
+  margin-right: 9px;
+  vertical-align: -2px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.script-modal-connecting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0 6px;
+}
+
+.script-modal-spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--accent-a);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.script-modal-connecting-text {
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.script-modal-busy .modal-dismiss-btn {
+  margin-top: 4px;
 }

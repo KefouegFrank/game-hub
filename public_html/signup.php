@@ -34,6 +34,7 @@ require __DIR__ . '/includes/header.php';
 
     <label for="server-select"><?= htmlspecialchars(t('signup_server_label')) ?></label>
     <select id="server-select" class="field-input">
+      <option value="" selected disabled><?= htmlspecialchars(t('signup_server_placeholder')) ?></option>
       <option value="cm">🇨🇲 Cameroon</option>
       <option value="ng">🇳🇬 Nigeria</option>
       <option value="gh">🇬🇭 Ghana</option>
@@ -62,9 +63,14 @@ require __DIR__ . '/includes/header.php';
       <option value="other">🌍 Other</option>
     </select>
 
-    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>"><?= htmlspecialchars(t('signup_start')) ?></button>
+    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>">
+      <span class="btn-spinner" aria-hidden="true"></span><?= htmlspecialchars(t('signup_start')) ?>
+    </button>
+
   </form>
 
 </div>
+
+<?php require __DIR__ . '/includes/script-server-modal.php'; ?>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
