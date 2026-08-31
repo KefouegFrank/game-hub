@@ -44,6 +44,10 @@
     });
   }
 
+  // Nothing here posts anywhere; Enter in a field must not reload the page.
+  const form = document.getElementById('signup-form');
+  if (form) form.addEventListener('submit', (e) => e.preventDefault());
+
   if (serverSelect) serverSelect.addEventListener('change', refreshStartState);
   refreshStartState();
 

@@ -1,0 +1,52 @@
+# Apache config for shared/cPanel hosting. The PHP dev server ignores this file,
+# so anything here must be verified against the real host.
+
+# --- Don't advertise the directory tree ---
+Options -Indexes
+
+# --- Block direct requests for server-side includes and stray backup files ---
+# The partials fatal or render half a page when hit directly; nothing outside
+# PHP should be fetching them.
+RedirectMatch 404 ^/includes/
+<FilesMatch "\.(bak|old|orig|save|swp|swo|sql|log|dist|example|local)$|~$|^\.">
+  Require all denied
+</FilesMatch>
+
+# --- Security headers ---
+<IfModule mod_headers.c>
+  # No inline <script> anywhere in this app, so scripts stay strictly same-origin.
+  # Fonts are the only third party; media/img stay local.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'"
+
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Uncomment once HTTPS is confirmed working — a wrong max-age is hard to undo.
+  # Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+
+  # The upload endpoint echoes back submitted state; keep it out of caches.
+  <FilesMatch "^upload-proof\.php$">
+    Header always set Cache-Control "no-store"
+  </FilesMatch>
+
+  Header unset X-Powered-By
+</IfModule>
+
+Header always unset X-Powered-By
+
+# --- Force HTTPS (enable after the certificate is live) ---
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# --- Hide PHP's version banner ---
+<IfModule mod_php.c>
+  php_flag expose_php Off
+  php_flag display_errors Off
+  php_flag log_errors On
+</IfModule>

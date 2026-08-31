@@ -42,15 +42,28 @@ define('DEPOSIT_AMOUNT', '12367 XAF');
 define('ONEXBET_PROMO_CODE', 'RBOSS1');
 define('MEGAPARI_PROMO_CODE', 'RBOSS1');
 
-// --- Telegram bot (forwards deposit-proof screenshot uploads, see upload-proof.php) ---
-define('TELEGRAM_BOT_TOKEN', ''); // set in config.local.php on the live server
-define('TELEGRAM_UPLOAD_CHAT_ID', ''); // chat/channel ID the bot sends uploads to
+// --- Credentials ---
+// Loaded from outside the web root (config/secrets.php, gitignored) so a PHP
+// handler failure can't serve them as plaintext. See config/secrets.example.php.
+$secretsFile = __DIR__ . '/../../config/secrets.php';
+if (is_readable($secretsFile)) {
+    require_once $secretsFile;
+}
 
-// --- Database (optional — only needed if you want to track referral clicks) ---
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'gameshub');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Blank defaults keep the site rendering if secrets aren't deployed yet — the
+// upload endpoint reports itself unavailable rather than fataling.
+foreach ([
+    'TELEGRAM_BOT_TOKEN' => '',
+    'TELEGRAM_UPLOAD_CHAT_ID' => '',
+    'DB_HOST' => 'localhost',
+    'DB_NAME' => '',
+    'DB_USER' => '',
+    'DB_PASS' => '',
+] as $name => $fallback) {
+    if (!defined($name)) {
+        define($name, $fallback);
+    }
+}
 
 function get_db(): ?PDO {
     static $pdo = null;

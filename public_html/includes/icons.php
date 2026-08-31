@@ -100,7 +100,7 @@ function icon_logo_mark(string $class, string $gradientId, string $strokeWidth):
     $strokeWidth = htmlspecialchars($strokeWidth);
     return '<svg class="' . $class . '" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
         . '<defs><linearGradient id="' . $gradientId . '" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">'
-        . '<stop offset="0" style="stop-color:var(--accent-a)" /><stop offset="1" style="stop-color:var(--accent-b)" /></linearGradient></defs>'
+        . '<stop offset="0" class="logo-grad-from" /><stop offset="1" class="logo-grad-to" /></linearGradient></defs>'
         . '<path d="M16 2 L28 16 L16 30 L4 16 Z" stroke="url(#' . $gradientId . ')" stroke-width="' . $strokeWidth . '" stroke-linejoin="round" />'
         . '<circle cx="16" cy="16" r="4" fill="url(#' . $gradientId . ')" />'
         . '</svg>';

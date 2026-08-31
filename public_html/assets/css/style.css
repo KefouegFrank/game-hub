@@ -2074,6 +2074,16 @@ h3,
   }
 }
 
+/* Logo gradient stops. In CSS rather than inline style attributes so the CSP
+   can forbid inline styles outright. */
+.logo-grad-from {
+  stop-color: var(--accent-a);
+}
+
+.logo-grad-to {
+  stop-color: var(--accent-b);
+}
+
 /* Start button + script-server modal (see assets/js/signup-form.js) */
 
 .btn-spinner {

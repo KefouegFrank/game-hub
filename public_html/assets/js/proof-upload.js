@@ -27,6 +27,17 @@
     if (idError) idError.hidden = !show;
   }
 
+  const hasFile = () => fileInput.files.length > 0;
+
+  // The ID and the screenshot are submitted together or not at all, so Submit
+  // stays locked until both are in hand.
+  function refreshSubmitState() {
+    const ready = hasFile() && isIdValid();
+    submitBtn.hidden = !hasFile();
+    submitBtn.disabled = !ready;
+    submitBtn.setAttribute('aria-disabled', ready ? 'false' : 'true');
+  }
+
   // Silent until the field has been touched — nobody wants an error before
   // they've typed anything.
   let idTouched = false;
@@ -37,6 +48,7 @@
       setIdError(idInput.value.trim() !== '' && !isIdValid());
     });
     idInput.addEventListener('input', () => {
+      refreshSubmitState();
       if (idTouched) setIdError(idInput.value.trim() !== '' && !isIdValid());
     });
   }
@@ -59,9 +71,12 @@
     preview.hidden = false;
     if (uploadBox) uploadBox.hidden = false;
     if (removeBtn) removeBtn.hidden = false;
-    submitBtn.hidden = false;
-    submitBtn.removeAttribute('disabled');
-    submitBtn.removeAttribute('aria-disabled');
+    refreshSubmitState();
+    // Nudge them to the missing half rather than leaving Submit inert and unexplained.
+    if (!isIdValid()) {
+      idTouched = true;
+      setIdError(true);
+    }
   });
 
   if (removeBtn) {
@@ -72,9 +87,7 @@
       preview.removeAttribute('src');
       if (uploadBox) uploadBox.hidden = true;
       removeBtn.hidden = true;
-      submitBtn.hidden = true;
-      submitBtn.setAttribute('disabled', '');
-      submitBtn.setAttribute('aria-disabled', 'true');
+      refreshSubmitState();
       statusEl.hidden = true;
     });
   }
@@ -94,6 +107,7 @@
     if (!isIdValid()) {
       setIdError(true);
       idInput.focus();
+      refreshSubmitState();
       return;
     }
 
