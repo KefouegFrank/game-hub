@@ -17,12 +17,14 @@ define('SHOW_AFFILIATE_DISCLOSURE', false);
 define('WHATSAPP_URL', 'https://whatsapp.com/channel/0029Vb605FpFcowFwiiIbG3H');
 define('APK_DOWNLOAD_URL', 'https://rboss1.megapari-983300.com/');
 
-// --- Affiliate platform links (placeholders until real affiliate links exist) ---
-define('ONEXBET_WEBSITE_URL', '#');
-define('ONEXBET_APP_URL', '#');
-define('MEGAPARI_WEBSITE_URL', '#');
-define('MEGAPARI_APP_URL', '#');
-define('TUTORIAL_VIDEO_URL', '#');
+// --- Affiliate platform links ---
+// No separate app-signup links exist yet, so the app buttons send people to the
+// same registration page as the website ones.
+define('ONEXBET_WEBSITE_URL', 'https://1xbet.cm/fr/registration');
+define('ONEXBET_APP_URL', 'https://1xbet.cm/fr/registration');
+define('MEGAPARI_WEBSITE_URL', 'https://rboss1.megapari-983300.com');
+define('MEGAPARI_APP_URL', 'https://rboss1.megapari-983300.com');
+define('TUTORIAL_VIDEO_URL', '#'); // unused: nothing reads the pickers' data-href
 
 // --- Registration walkthrough videos shown by the platform picker ---
 // MegaPari has no website capture yet, so both its buttons play the app one.

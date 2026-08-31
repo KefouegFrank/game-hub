@@ -2030,3 +2030,21 @@ h3,
   font-family: var(--font-body);
   font-size: 1rem;
 }
+
+/* The three-column row (arrow, brand pill, code card) needs ~400px, so on a
+   phone the code card drops onto its own line under the pill. Has to sit after
+   the .crash-flow / .game-flow blocks above to beat them on source order. */
+@media (max-width: 480px) {
+  .crash-flow .signup-row,
+  .game-flow .signup-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px 12px;
+  }
+
+  .crash-flow .promo-pill,
+  .game-flow .promo-pill {
+    grid-column: 2;
+    justify-self: stretch;
+    min-width: 0;
+  }
+}
