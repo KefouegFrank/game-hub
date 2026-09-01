@@ -1,7 +1,7 @@
 <?php
 // One "arrow + brand pill + promo code" row. Set $rowBrandName, $rowLogo,
 // $rowUrl, $rowCode before including; $rowCompact swaps the Copy button for a
-// clipboard icon. Reused by signup-rows.php, deposit-proof-panel.php, thimbles.
+// clipboard icon. Reused by signup-rows.php and the crash/thimbles game pages.
 $rowCompact = $rowCompact ?? false;
 ?>
 <div class="signup-row">

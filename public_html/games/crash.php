@@ -21,7 +21,7 @@ require __DIR__ . '/../includes/header.php';
   <div class="callout-warn">
     <?= icon_warning() ?>
     <span><strong><?= htmlspecialchars(t('important_label')) ?>:</strong>
-      <?= sprintf(htmlspecialchars(t('deposit_note')), '<strong>' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>') ?></span>
+      <?= sprintf(htmlspecialchars(t('deposit_note')), '<strong dir="ltr">' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>') ?></span>
   </div>
 
   <div class="signup-rows">

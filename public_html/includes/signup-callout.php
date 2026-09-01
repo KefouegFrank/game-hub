@@ -9,8 +9,8 @@ if ($calloutCode === '') {
 }
 $calloutText = sprintf(
     implode("\n", $calloutLines),
-    '<strong class="callout-code">' . htmlspecialchars($calloutCode) . '</strong>',
-    '<strong class="callout-amount">' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>'
+    '<strong class="callout-code" dir="ltr">' . htmlspecialchars($calloutCode) . '</strong>',
+    '<strong class="callout-amount" dir="ltr">' . htmlspecialchars(DEPOSIT_AMOUNT) . '</strong>'
 );
 ?>
 <div class="callout-box callout-signup">

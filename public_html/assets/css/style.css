@@ -193,7 +193,7 @@ h3,
 .lang-switch ul {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0;
+  inset-inline-end: 0;
   min-width: 160px;
   margin: 0;
   padding: 6px;
@@ -344,7 +344,7 @@ h3,
 .video-poster-play svg {
   width: 34px;
   height: 34px;
-  margin-left: 4px;
+  margin-left: 4px; /* physical on purpose: the play triangle points right in RTL too */
 }
 .video-poster-overlay:hover .video-poster-play {
   transform: scale(1.07);
@@ -856,7 +856,7 @@ h3,
 .modal-close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  inset-inline-end: 10px;
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -942,7 +942,7 @@ h3,
   display: flex;
   flex-direction: column;
   gap: 14px;
-  text-align: left;
+  text-align: start;
 }
 .signup-form label {
   font-size: 1rem;
@@ -1086,7 +1086,7 @@ h3,
 .guide-step-badge {
   position: absolute;
   top: -12px;
-  left: -12px;
+  inset-inline-start: -12px;
   width: 28px;
   height: 28px;
   display: flex;
@@ -1121,18 +1121,6 @@ h3,
   color: var(--muted);
   font-size: 0.9rem;
   text-align: center;
-}
-@keyframes tile-nudge {
-  0%,
-  100% {
-    rotate: 0deg;
-  }
-  30% {
-    rotate: -1.4deg;
-  }
-  65% {
-    rotate: 1.4deg;
-  }
 }
 @media (max-width: 480px) {
   .logo {
@@ -1286,22 +1274,13 @@ h3,
   font-size: 0.82rem;
   font-weight: 600;
   color: #f87171;
-  text-align: left;
+  text-align: start;
 }
 .field-input.field-invalid {
   border-color: #f87171;
 }
 .field-input.field-invalid:focus {
   border-color: #f87171;
-}
-@keyframes point-nudge-down {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 5px;
-  }
 }
 /* The reference sets this flow in plain sans, not the display face used for
    buttons elsewhere on the site. */
@@ -1336,7 +1315,7 @@ h3,
   color: var(--text);
   font-size: 0.9rem;
   font-weight: 700;
-  text-align: left;
+  text-align: start;
 }
 .callout-warn svg {
   width: 20px;
@@ -1428,7 +1407,7 @@ h3,
   display: none;
   width: 15px;
   height: 15px;
-  margin-right: 9px;
+  margin-inline-end: 9px;
   vertical-align: -2px;
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: #fff;
@@ -1523,7 +1502,7 @@ h3,
   border: 1px solid var(--border);
   border-radius: 12px;
   background: #161a26;
-  text-align: left;
+  text-align: start;
 }
 .forecast-row-time {
   font-family: "Space Mono", monospace;
@@ -1594,7 +1573,7 @@ h3,
   grid-template-columns: 48px 140px 1fr;
 }
 .thimbles-row .forecast-row-status {
-  text-align: right;
+  text-align: end;
 }
 .thimbles-row .pick-cell {
   width: 40px;
@@ -1610,7 +1589,7 @@ h3,
   font-size: 0.82rem;
   font-weight: 700;
   color: #fff;
-  text-align: right;
+  text-align: end;
 }
 .apple-row.is-target .apple-coef {
   color: #4ade80;
@@ -1645,4 +1624,54 @@ h3,
     padding: 12px 14px;
     gap: 8px;
   }
+}
+
+
+/* Arabic (RTL) ------------------------------------------------------------
+   The layout mirrors on its own — everything above uses logical properties.
+   What is left is the type (Orbitron, Inter and Space Mono carry no Arabic
+   glyphs) and the handful of marks that have to be flipped by hand. */
+
+[lang="ar"] {
+  --font-body: "Cairo", "Segoe UI", Tahoma, sans-serif;
+}
+
+[lang="ar"] h1,
+[lang="ar"] h2,
+[lang="ar"] h3,
+[lang="ar"] .btn,
+[lang="ar"] .section-heading,
+[lang="ar"] .hero-lede {
+  font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+}
+
+/* The wordmark and the big multiplier stay on the display face — one is a
+   brand, the other is digits. */
+[lang="ar"] .logo-word,
+[lang="ar"] .forecast-figure {
+  font-family: var(--font-display);
+}
+
+/* Arrows and carets point the other way once the page is mirrored. The pointing
+   hand uses `scale` rather than `transform` so it keeps its nudge animation. */
+[dir="rtl"] .back-btn svg,
+[dir="rtl"] .brand-pill .chevron,
+[dir="rtl"] .lead-chevron {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .pointer-icon {
+  scale: -1 1;
+}
+
+/* Multipliers, clocks and level numbers are Latin runs: without their own
+   direction the RTL paragraph drags the × to the wrong side (×4.02). */
+[dir="rtl"] .forecast-figure,
+[dir="rtl"] .forecast-row-time,
+[dir="rtl"] .forecast-row-value,
+[dir="rtl"] .forecast-row-status,
+[dir="rtl"] .apple-level,
+[dir="rtl"] .apple-coef {
+  direction: ltr;
 }

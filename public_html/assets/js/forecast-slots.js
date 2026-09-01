@@ -39,7 +39,9 @@
   const newSeed = () => Math.random().toString(36).slice(2);
 
   function formatter(digits = 2) {
-    const nf = new Intl.NumberFormat(document.documentElement.lang || 'en', {
+    // -nu-latn keeps Arabic on Latin digits, which is what betting figures use;
+    // the locale still decides the decimal mark (1,98 in fr/es, 1.98 in en).
+    const nf = new Intl.NumberFormat((document.documentElement.lang || 'en') + '-u-nu-latn', {
       minimumFractionDigits: digits,
       maximumFractionDigits: digits,
     });

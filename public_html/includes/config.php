@@ -50,7 +50,11 @@ $SUPPORTED_LANGS = [
     'en' => 'English',
     'fr' => 'Français',
     'es' => 'Español',
+    'ar' => 'العربية',
 ];
+
+// Written right-to-left; drives <html dir> and the RTL rules in style.css.
+$RTL_LANGS = ['ar'];
 
 // --- Current language (?lang= wins, then the remembered choice, else en) ---
 $lang = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'en';
@@ -71,6 +75,7 @@ if (isset($_GET['lang']) && $lang === $_GET['lang'] && ($_COOKIE['lang'] ?? '') 
 }
 
 $GLOBALS['CURRENT_LANG'] = $lang;
+$GLOBALS['CURRENT_DIR'] = in_array($lang, $RTL_LANGS, true) ? 'rtl' : 'ltr';
 
 function t(string $key): string {
     static $strings = null;
