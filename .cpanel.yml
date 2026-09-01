@@ -1,8 +1,7 @@
 ---
 deployment:
   tasks:
-    # Only public_html/ is web-facing. config/, db/ and storage/ stay out of the
-    # docroot and are placed once by hand — see README "Deploying to cPanel".
+    # public_html/ is the whole app — nothing lives outside the docroot.
     - export DEPLOYPATH=$HOME/predictloncasino.com
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R public_html/. $DEPLOYPATH/

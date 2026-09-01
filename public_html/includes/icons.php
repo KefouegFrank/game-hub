@@ -84,12 +84,6 @@ function icon_arrow_left(): string {
         . '</svg>';
 }
 
-function icon_upload(): string {
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-        . '<path d="M12 15V4M8 8l4-4 4 4" />'
-        . '<path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" />'
-        . '</svg>';
-}
 
 function icon_image_placeholder(): string {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'

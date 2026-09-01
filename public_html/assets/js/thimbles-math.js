@@ -13,11 +13,5 @@
   const chance = (balls) => balls / THIMBLES;
   const coefficient = (balls) => Math.round((RTP / chance(balls)) * 100) / 100;
 
-  const modes = [1, 2].map((balls) => ({
-    balls,
-    chance: chance(balls),
-    coefficient: coefficient(balls),
-  }));
-
-  window.ThimblesMath = { THIMBLES, RTP, chance, coefficient, modes };
+  window.ThimblesMath = { THIMBLES, coefficient };
 })();

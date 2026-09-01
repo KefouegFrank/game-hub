@@ -30,5 +30,5 @@
     coefficient: coefficient(i + 1),
   }));
 
-  window.AppleMath = { CELLS, LEVELS, BAD, levelChance, reachChance, coefficient, table };
+  window.AppleMath = { CELLS, coefficient, table };
 })();

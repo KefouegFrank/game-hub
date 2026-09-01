@@ -25,10 +25,7 @@
 <script src="/assets/js/platform-select.js?v=<?= filemtime(__DIR__ . '/../assets/js/platform-select.js') ?>"></script>
 <script src="/assets/js/promo-copy.js?v=<?= filemtime(__DIR__ . '/../assets/js/promo-copy.js') ?>"></script>
 <script src="/assets/js/registration-check.js?v=<?= filemtime(__DIR__ . '/../assets/js/registration-check.js') ?>"></script>
-<script src="/assets/js/reveal-code.js?v=<?= filemtime(__DIR__ . '/../assets/js/reveal-code.js') ?>"></script>
-<script src="/assets/js/screenshot-example-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/screenshot-example-modal.js') ?>"></script>
 <script src="/assets/js/numeric-input.js?v=<?= filemtime(__DIR__ . '/../assets/js/numeric-input.js') ?>"></script>
-<script src="/assets/js/proof-upload.js?v=<?= filemtime(__DIR__ . '/../assets/js/proof-upload.js') ?>"></script>
 <script src="/assets/js/signup-form.js?v=<?= filemtime(__DIR__ . '/../assets/js/signup-form.js') ?>"></script>
 <script src="/assets/js/forecast-slots.js?v=<?= filemtime(__DIR__ . '/../assets/js/forecast-slots.js') ?>"></script>
 <script src="/assets/js/crash-math.js?v=<?= filemtime(__DIR__ . '/../assets/js/crash-math.js') ?>"></script>

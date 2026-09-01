@@ -1,5 +1,3 @@
-config.local.php
+config/secrets.php
 .DS_Store
 *.log
-config/secrets.php
-storage/

@@ -7,7 +7,6 @@
 
 // --- Basic site info ---
 define('SITE_NAME', 'GamesHub');
-define('SITE_URL', 'http://localhost:8000'); // change to your real domain in production
 define('SITE_TAGLINE', 'Best online games and betting platforms online');
 
 // --- Affiliate disclosure ---
@@ -39,61 +38,12 @@ define('HERO_VIDEO', WALKTHROUGH_VIDEO);
 define('HERO_POSTER', ''); // optional still shown before play; blank uses the clip's first frame
 
 // --- Deposit required to unlock the script (shown in the crash flow) ---
-define('DEPOSIT_AMOUNT', '12367 XAF');
+// Rounded up from ~5650 FCFA so $10 stays covered when the rate moves.
+define('DEPOSIT_AMOUNT', '$10 (6000 FCFA)');
 
 // --- Promo codes (blank until real codes exist — the pill only renders when set) ---
 define('ONEXBET_PROMO_CODE', 'RBOSS1');
 define('MEGAPARI_PROMO_CODE', 'RBOSS1');
-
-// --- Credentials ---
-// Loaded from outside the web root (config/secrets.php, gitignored) so a PHP
-// handler failure can't serve them as plaintext. See config/secrets.example.php.
-// Two layouts to satisfy: local dev, where the docroot is public_html itself, and
-// an addon domain, where counting ../ up from here stops inside public_html.
-$home = getenv('HOME');
-foreach (array_filter([
-    __DIR__ . '/../../config/secrets.php',
-    $home ? $home . '/config/secrets.php' : null,
-]) as $secretsFile) {
-    if (is_readable($secretsFile)) {
-        require_once $secretsFile;
-        break;
-    }
-}
-
-// Blank defaults keep the site rendering if secrets aren't deployed yet — the
-// upload endpoint reports itself unavailable rather than fataling.
-foreach ([
-    'TELEGRAM_BOT_TOKEN' => '',
-    'TELEGRAM_UPLOAD_CHAT_ID' => '',
-    'DB_HOST' => 'localhost',
-    'DB_NAME' => '',
-    'DB_USER' => '',
-    'DB_PASS' => '',
-] as $name => $fallback) {
-    if (!defined($name)) {
-        define($name, $fallback);
-    }
-}
-
-function get_db(): ?PDO {
-    static $pdo = null;
-    if ($pdo === null) {
-        try {
-            $pdo = new PDO(
-                'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
-                DB_USER,
-                DB_PASS,
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-            );
-        } catch (PDOException $e) {
-            // In local dev without a DB set up yet, fail soft instead of crashing every page.
-            error_log('DB connection failed: ' . $e->getMessage());
-            return null;
-        }
-    }
-    return $pdo;
-}
 
 // --- Supported languages ---
 $SUPPORTED_LANGS = [
