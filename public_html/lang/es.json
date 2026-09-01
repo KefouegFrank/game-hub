@@ -81,5 +81,8 @@
   "forecast_refresh": "Actualizar predicciones",
   "forecast_starts_in": "Empieza en",
   "forecast_running": "En curso",
-  "forecast_loading": "Analizando rondas…"
+  "forecast_loading": "Analizando rondas…",
+  "apple_page_title": "Predicciones de Apple of Fortune",
+  "apple_level": "Nivel",
+  "apple_cell": "Casilla"
 }

@@ -1,6 +1,8 @@
 <?php
-// Direct brand links + promo codes + the "Continue to sign up" CTA.
-// No params — reads the platform constants straight from config.php.
+// Direct brand links + promo codes + the "Continue to sign up" CTA. Brands come
+// straight from config.php; $rowGame is optional and only decides which
+// prediction card the signup flow ends on (see assets/js/signup-form.js).
+$gameParam = isset($rowGame) ? '&amp;game=' . urlencode($rowGame) : '';
 ?>
 <div class="signup-rows">
   <?php
@@ -16,5 +18,5 @@
   $rowCode = MEGAPARI_PROMO_CODE;
   require __DIR__ . '/promo-row.php';
   ?>
-  <a id="continue-btn" class="btn btn-gradient btn-block" href="/signup.php?platform=onexbet" data-platform="onexbet"><?= htmlspecialchars(t('continue_cta')) ?></a>
+  <a id="continue-btn" class="btn btn-gradient btn-block" href="/signup.php?platform=onexbet<?= $gameParam ?>" data-platform="onexbet"><?= htmlspecialchars(t('continue_cta')) ?></a>
 </div>

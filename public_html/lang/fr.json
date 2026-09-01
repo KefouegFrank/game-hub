@@ -81,5 +81,8 @@
   "forecast_refresh": "Actualiser les prédictions",
   "forecast_starts_in": "Départ dans",
   "forecast_running": "En cours",
-  "forecast_loading": "Analyse en cours…"
+  "forecast_loading": "Analyse en cours…",
+  "apple_page_title": "Prédictions Apple of Fortune",
+  "apple_level": "Niveau",
+  "apple_cell": "Case"
 }

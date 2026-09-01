@@ -1,8 +1,9 @@
 // Signup page. Start unlocks only once the ID matches the 8-10 digit account
 // format 1xBet and MegaPari both use (same rule as assets/js/proof-upload.js)
 // and a country is picked. The first two attempts hit a busy script server
-// (see includes/script-server-modal.php); the third gets through to the crash
-// toolkit. The counter persists so reloading doesn't reset progress.
+// (see includes/script-server-modal.php); the third gets through to the
+// prediction card the game page picked. The counter persists so reloading
+// doesn't reset progress.
 (() => {
   const startBtn = document.getElementById('signup-start-btn');
   const idInput = document.getElementById('account-id');
@@ -17,7 +18,7 @@
   const CONNECT_MS = 2600;
   const ATTEMPTS_REQUIRED = 3;
   const ATTEMPT_KEY = 'script-attempts';
-  const TOOLKIT_URL = '/script.php';
+  const TOOLKIT_URL = startBtn.dataset.toolkit || '/script.php';
 
   function attempts() {
     try {

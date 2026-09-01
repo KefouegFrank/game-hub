@@ -2225,6 +2225,73 @@ h3,
   font-size: 0.85rem;
 }
 
+/* Apple of Fortune card — ten levels, five cells, the pick lit up */
+
+.forecast-apple {
+  max-width: 420px;
+}
+
+.apple-rows {
+  gap: 6px;
+}
+
+.apple-row {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #161a26;
+}
+
+.apple-row.is-target {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.09);
+}
+
+.apple-row.is-beyond {
+  opacity: 0.4;
+}
+
+.apple-level {
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.apple-cells {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.apple-cell {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.apple-cell.is-pick {
+  background: rgba(74, 222, 128, 0.18);
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.45) inset;
+  background-image: radial-gradient(circle at 50% 55%, #4ade80 22%, transparent 23%);
+}
+
+.apple-coef {
+  width: 68px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: right;
+}
+
+.apple-row.is-target .apple-coef {
+  color: #4ade80;
+}
+
 .forecast.is-loading .forecast-figure,
 .forecast.is-loading .forecast-sub,
 .forecast.is-loading .forecast-rows {

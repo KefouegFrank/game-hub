@@ -14,6 +14,7 @@ require __DIR__ . '/../includes/pre-play-callout.php';
 <?php require __DIR__ . '/../includes/signup-callout.php'; ?>
 
 <?php
+$rowGame = 'apple';
 require __DIR__ . '/../includes/signup-rows.php';
 require __DIR__ . '/../includes/registration-check-modal.php';
 ?>

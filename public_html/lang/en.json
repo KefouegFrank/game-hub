@@ -81,5 +81,8 @@
   "forecast_refresh": "Refresh predictions",
   "forecast_starts_in": "Starts in",
   "forecast_running": "Running now",
-  "forecast_loading": "Analysing rounds…"
+  "forecast_loading": "Analysing rounds…",
+  "apple_page_title": "Apple of Fortune predictions",
+  "apple_level": "Level",
+  "apple_cell": "Cell"
 }

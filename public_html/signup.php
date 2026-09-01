@@ -11,6 +11,10 @@ if (!array_key_exists($platform, $platforms)) {
     $platform = 'onexbet';
 }
 
+// Which prediction card this flow ends on; unknown games fall back to crash.
+$toolkits = ['crash' => '/script.php', 'apple' => '/apple-script.php'];
+$toolkit = $toolkits[$_GET['game'] ?? 'crash'] ?? $toolkits['crash'];
+
 $pageTitle = t('signup_heading') . ' | ' . SITE_NAME;
 require __DIR__ . '/includes/header.php';
 ?>
@@ -63,7 +67,7 @@ require __DIR__ . '/includes/header.php';
       <option value="other">🌍 Other</option>
     </select>
 
-    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>">
+    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-toolkit="<?= htmlspecialchars($toolkit) ?>" data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>">
       <span class="btn-spinner" aria-hidden="true"></span><?= htmlspecialchars(t('signup_start')) ?>
     </button>
 
