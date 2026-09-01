@@ -35,6 +35,8 @@
 <script src="/assets/js/crash-forecast.js?v=<?= filemtime(__DIR__ . '/../assets/js/crash-forecast.js') ?>"></script>
 <script src="/assets/js/apple-math.js?v=<?= filemtime(__DIR__ . '/../assets/js/apple-math.js') ?>"></script>
 <script src="/assets/js/apple-forecast.js?v=<?= filemtime(__DIR__ . '/../assets/js/apple-forecast.js') ?>"></script>
+<script src="/assets/js/thimbles-math.js?v=<?= filemtime(__DIR__ . '/../assets/js/thimbles-math.js') ?>"></script>
+<script src="/assets/js/thimbles-forecast.js?v=<?= filemtime(__DIR__ . '/../assets/js/thimbles-forecast.js') ?>"></script>
 <script src="/assets/js/script.js?v=<?= filemtime(__DIR__ . '/../assets/js/script.js') ?>"></script>
 </body>
 </html>

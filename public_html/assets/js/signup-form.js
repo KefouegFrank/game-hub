@@ -3,7 +3,7 @@
 // and a country is picked. The first two attempts hit a busy script server
 // (see includes/script-server-modal.php); the third gets through to the
 // prediction card the game page picked. The counter persists so reloading
-// doesn't reset progress.
+// doesn't reset progress, and each game keeps its own count.
 (() => {
   const startBtn = document.getElementById('signup-start-btn');
   const idInput = document.getElementById('account-id');
@@ -17,7 +17,8 @@
 
   const CONNECT_MS = 2600;
   const ATTEMPTS_REQUIRED = 3;
-  const ATTEMPT_KEY = 'script-attempts';
+  // Counted per game: every card costs its own three tries at the busy server.
+  const ATTEMPT_KEY = 'script-attempts:' + (startBtn.dataset.game || 'crash');
   const TOOLKIT_URL = startBtn.dataset.toolkit || '/script.php';
 
   function attempts() {

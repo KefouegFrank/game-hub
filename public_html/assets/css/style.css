@@ -298,9 +298,15 @@ h3,
   animation: spin 12s linear infinite;
 }
 
+/* Portrait clip, so the player is phone-shaped and height-driven like the
+   game-media frame rather than a 16/9 box that would crop it. */
 .hero-player {
   position: relative;
-  aspect-ratio: 16 / 9;
+  height: min(58vh, 460px);
+  width: fit-content;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
   border-radius: 14px;
   overflow: hidden;
   background: #000;
@@ -1236,7 +1242,7 @@ h3,
   display: none;
 }
 
-.guide-back-btn {
+.back-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1246,7 +1252,7 @@ h3,
   color: var(--text);
 }
 
-.guide-back-btn svg {
+.back-btn svg {
   width: 18px;
   height: 18px;
 }
@@ -2110,7 +2116,7 @@ h3,
   padding: 12px 0 6px;
 }
 
-.script-modal-spinner {
+.spinner-ring {
   width: 42px;
   height: 42px;
   border: 3px solid rgba(255, 255, 255, 0.15);
@@ -2134,7 +2140,11 @@ h3,
 .toolkit {
   max-width: 720px;
   margin: 0 auto;
-  padding: 40px 0 30px;
+  padding: 16px 0 30px;
+}
+
+.toolkit .back-btn {
+  margin: 0 0 10px;
 }
 
 /* Round forecast — the reference predictor layout, real numbers behind it */
@@ -2225,7 +2235,7 @@ h3,
   font-size: 0.85rem;
 }
 
-/* Apple of Fortune card — ten levels, five cells, the pick lit up */
+/* Level/cell rows shared by the apple of fortune and thimbles cards */
 
 .forecast-apple {
   max-width: 420px;
@@ -2261,20 +2271,34 @@ h3,
   color: var(--muted);
 }
 
-.apple-cells {
+.pick-cells {
   display: flex;
   justify-content: center;
   gap: 6px;
 }
 
-.apple-cell {
+.pick-cell {
   width: 26px;
   height: 26px;
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.05);
 }
 
-.apple-cell.is-pick {
+/* Fixed side columns, so the thimbles line up down the card */
+.thimbles-row {
+  grid-template-columns: 48px 140px 1fr;
+}
+
+.thimbles-row .forecast-row-status {
+  text-align: right;
+}
+
+.thimbles-row .pick-cell {
+  width: 40px;
+  height: 32px;
+}
+
+.pick-cell.is-pick {
   background: rgba(74, 222, 128, 0.18);
   box-shadow: 0 0 12px rgba(74, 222, 128, 0.45) inset;
   background-image: radial-gradient(circle at 50% 55%, #4ade80 22%, transparent 23%);
@@ -2292,20 +2316,27 @@ h3,
   color: #4ade80;
 }
 
-.forecast.is-loading .forecast-figure,
-.forecast.is-loading .forecast-sub,
-.forecast.is-loading .forecast-rows {
-  animation: forecast-dim 0.9s ease-in-out infinite;
+.forecast-body {
+  position: relative;
 }
 
-.forecast.is-loading .forecast-figure {
-  text-shadow: none;
+.forecast.is-loading .forecast-body > :not(.forecast-spinner) {
+  opacity: 0.18;
+  filter: blur(2px);
 }
 
-@keyframes forecast-dim {
-  50% {
-    opacity: 0.3;
-  }
+.forecast-spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 54px;
+  height: 54px;
+  z-index: 1;
+}
+
+.forecast.is-loading .forecast-spinner {
+  display: block;
 }
 
 .forecast-explain {

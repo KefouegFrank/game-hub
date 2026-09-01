@@ -13,7 +13,6 @@
   const clockEl = document.getElementById('apple-clock');
   const countdownEl = document.getElementById('apple-countdown');
   const refreshBtn = document.getElementById('apple-refresh');
-  const refreshLabel = document.getElementById('apple-refresh-label');
 
   const startsInLabel = rowsEl.dataset.startsIn || 'Starts in';
   const runningLabel = rowsEl.dataset.running || 'Running now';
@@ -50,12 +49,12 @@
 
       const cells = Array.from(
         { length: A.CELLS },
-        (_, i) => `<span class="apple-cell${i === pick ? ' is-pick' : ''}"></span>`,
+        (_, i) => `<span class="pick-cell${i === pick ? ' is-pick' : ''}"></span>`,
       ).join('');
 
       el.innerHTML =
         `<span class="apple-level">${row.level}</span>` +
-        `<span class="apple-cells" aria-label="${cellLabel} ${pick + 1}/${A.CELLS}">${cells}</span>` +
+        `<span class="pick-cells" aria-label="${cellLabel} ${pick + 1}/${A.CELLS}">${cells}</span>` +
         `<span class="apple-coef">${fmt(row.coefficient)}</span>`;
       rowsEl.appendChild(el);
     });
@@ -73,7 +72,7 @@
     countdownEl.textContent = `${levelLabel} ${stop} · ${when}`;
   }
 
-  const isBusy = S.bindRefresh(cardEl, refreshBtn, refreshLabel, () => {
+  const isBusy = S.bindRefresh(cardEl, refreshBtn, () => {
     seed = S.newSeed();
     build(Date.now());
   });

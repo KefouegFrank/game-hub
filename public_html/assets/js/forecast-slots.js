@@ -47,26 +47,19 @@
   }
 
   // The draw itself is instant; the pause is what makes the spinner mean
-  // anything, so the panel stays put and dimmed until the new numbers land.
-  function bindRefresh(card, btn, label, redraw) {
-    const idleLabel = label.textContent;
-    const loadingLabel = btn.dataset.loadingLabel || idleLabel;
+  // anything. Only the card body goes under the spinner — the button keeps its
+  // label and stays put, it just ignores clicks until the numbers land.
+  function bindRefresh(card, btn, redraw) {
     let busy = false;
 
     btn.addEventListener('click', () => {
       if (busy) return;
       busy = true;
       card.classList.add('is-loading');
-      btn.classList.add('is-loading');
-      btn.disabled = true;
-      label.textContent = loadingLabel;
 
       setTimeout(() => {
         redraw();
         card.classList.remove('is-loading');
-        btn.classList.remove('is-loading');
-        btn.disabled = false;
-        label.textContent = idleLabel;
         busy = false;
       }, REDRAW_MS);
     });

@@ -40,7 +40,7 @@ require __DIR__ . '/../includes/header.php';
     ?>
   </div>
 
-  <a id="continue-btn" class="btn btn-blue game-flow-next" href="/signup.php?platform=megapari" data-platform="megapari"><?= htmlspecialchars(t('next_label')) ?></a>
+  <a id="continue-btn" class="btn btn-blue game-flow-next" href="/signup.php?platform=megapari&amp;game=thimbles" data-platform="megapari"><?= htmlspecialchars(t('next_label')) ?></a>
 </section>
 
 <?php require __DIR__ . '/../includes/registration-check-modal.php'; ?>

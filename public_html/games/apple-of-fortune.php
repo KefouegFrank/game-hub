@@ -6,6 +6,7 @@ require __DIR__ . '/../includes/header.php';
 
 <?php
 $gameMediaAlt = 'Registration walkthrough video';
+$gameMediaFixed = 'portrait';
 require __DIR__ . '/../includes/game-media.php';
 require __DIR__ . '/../includes/platform-buttons.php';
 require __DIR__ . '/../includes/pre-play-callout.php';

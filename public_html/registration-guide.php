@@ -5,7 +5,7 @@ $bodyClass = 'guide-page';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<a class="btn guide-back-btn" href="/">
+<a class="btn back-btn" href="/">
   <?= icon_home() ?>
   <?= htmlspecialchars(t('guide_back_home')) ?>
 </a>

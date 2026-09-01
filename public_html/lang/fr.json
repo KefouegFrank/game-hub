@@ -81,8 +81,11 @@
   "forecast_refresh": "Actualiser les prédictions",
   "forecast_starts_in": "Départ dans",
   "forecast_running": "En cours",
-  "forecast_loading": "Analyse en cours…",
   "apple_page_title": "Prédictions Apple of Fortune",
   "apple_level": "Niveau",
-  "apple_cell": "Case"
+  "apple_cell": "Case",
+  "thimbles_page_title": "Prédictions Thimbles",
+  "thimbles_mode": "1 balle",
+  "thimbles_pick": "Gobelet",
+  "back_label": "Retour"
 }

@@ -16,7 +16,6 @@
   const clockEl = document.getElementById('forecast-clock');
   const countdownEl = document.getElementById('forecast-countdown');
   const refreshBtn = document.getElementById('forecast-refresh');
-  const refreshLabel = document.getElementById('forecast-refresh-label');
 
   const startsInLabel = rowsEl.dataset.startsIn || 'Starts in';
   const runningLabel = rowsEl.dataset.running || 'Running now';
@@ -63,7 +62,7 @@
       now >= firstSlot ? runningLabel : startsInLabel + ' ' + S.countdown(firstSlot, now);
   }
 
-  const isBusy = S.bindRefresh(cardEl, refreshBtn, refreshLabel, () => {
+  const isBusy = S.bindRefresh(cardEl, refreshBtn, () => {
     seed = S.newSeed();
     build(Date.now());
   });

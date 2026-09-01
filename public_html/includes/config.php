@@ -26,13 +26,16 @@ define('MEGAPARI_WEBSITE_URL', 'https://rboss1.megapari-983300.com');
 define('MEGAPARI_APP_URL', 'https://rboss1.megapari-983300.com');
 define('TUTORIAL_VIDEO_URL', '#'); // unused: nothing reads the pickers' data-href
 
-// --- Registration walkthrough videos shown by the platform picker ---
-// MegaPari has no website capture yet, so both its buttons play the app one.
-define('ONEXBET_WEBSITE_VIDEO', '/assets/video/1xbet-registration-website.mp4');
-define('ONEXBET_APP_VIDEO', '/assets/video/1xbet-registration-app.mp4');
-define('MEGAPARI_WEBSITE_VIDEO', '/assets/video/megaPari-registration-app.mp4');
-define('MEGAPARI_APP_VIDEO', '/assets/video/megaPari-registration-app.mp4');
-define('HERO_VIDEO', '/assets/video/1xbet-registration-website.mp4'); // swap once a real intro exists
+// --- Walkthrough video ---
+// One clip covers every brand and both platforms, so every player on the site
+// points at it. Per-brand captures live on in git if the split is ever wanted
+// back; give each constant its own file and the picker starts switching again.
+define('WALKTHROUGH_VIDEO', '/assets/video/Wall-in-one.mp4'); // portrait, 576x1024
+define('ONEXBET_WEBSITE_VIDEO', WALKTHROUGH_VIDEO);
+define('ONEXBET_APP_VIDEO', WALKTHROUGH_VIDEO);
+define('MEGAPARI_WEBSITE_VIDEO', WALKTHROUGH_VIDEO);
+define('MEGAPARI_APP_VIDEO', WALKTHROUGH_VIDEO);
+define('HERO_VIDEO', WALKTHROUGH_VIDEO);
 define('HERO_POSTER', ''); // optional still shown before play; blank uses the clip's first frame
 
 // --- Deposit required to unlock the script (shown in the crash flow) ---

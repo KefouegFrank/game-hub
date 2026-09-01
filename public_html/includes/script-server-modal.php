@@ -5,7 +5,7 @@
 ?>
 <dialog id="script-server-modal" class="modal-box script-modal" closedby="any" aria-labelledby="script-modal-title">
   <div class="script-modal-connecting" id="script-modal-connecting">
-    <span class="script-modal-spinner" aria-hidden="true"></span>
+    <span class="spinner-ring" aria-hidden="true"></span>
     <p class="script-modal-connecting-text"><?= htmlspecialchars(t('script_connecting')) ?></p>
   </div>
 
