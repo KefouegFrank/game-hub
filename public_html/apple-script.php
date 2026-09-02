@@ -17,7 +17,6 @@ require __DIR__ . '/includes/header.php';
 
       <p class="forecast-label"><?= htmlspecialchars(t('forecast_next')) ?> &middot; <span id="apple-clock">--:--</span></p>
 
-      <p class="forecast-figure" id="apple-figure">&mdash;</p>
       <p class="forecast-sub" id="apple-countdown">&nbsp;</p>
 
       <div class="forecast-rows apple-rows" id="apple-rows"

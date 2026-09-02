@@ -37,13 +37,6 @@ require __DIR__ . '/includes/header.php';
       <span class="btn btn-gradient btn-block"><?= htmlspecialchars(t('learn_more')) ?></span>
     </div>
   </a>
-  <a class="game-card" href="/games/thimbles.php">
-    <div class="game-card-thumb"><img src="/assets/img/thimbles.jpeg" alt="Thimbles"></div>
-    <div class="game-card-body">
-      <h3 class="game-card-title"><?= htmlspecialchars(t('free_label')) ?> | <?= htmlspecialchars(t('nav_thimbles')) ?></h3>
-      <span class="btn btn-gradient btn-block"><?= htmlspecialchars(t('learn_more')) ?></span>
-    </div>
-  </a>
 </section>
 
 <div class="cta-stack">
@@ -58,7 +51,5 @@ require __DIR__ . '/includes/header.php';
     <?php if (APK_DOWNLOAD_URL === '#'): ?><span class="badge"><?= htmlspecialchars(t('coming_soon')) ?></span><?php endif; ?>
   </a>
 </div>
-
-<?php require __DIR__ . '/includes/registration-guide-cta.php'; ?>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>

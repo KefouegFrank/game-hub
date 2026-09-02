@@ -1,7 +1,6 @@
 {
   "nav_crash": "Crash",
   "nav_apple": "Apple of Fortune",
-  "nav_thimbles": "Thimbles",
   "hero_title": "Aquí encontrarás los mejores scripts gratuitos para ganar en juegos de casino.",
   "hero_video_title": "Cómo funciona este sitio",
   "hero_play_label": "Reproducir vídeo",
@@ -45,9 +44,7 @@
   "guide_step_2": "Elige 1xBet o MegaPari y copia tu código promocional.",
   "guide_step_3": "Abre la página de registro y elige el registro con un clic para terminar.",
   "crash_welcome": "¡Bienvenido! El Crash Script ahora es GRATIS.",
-  "thimbles_video_title": "Script de Thimbles gratis",
   "crash_video_title": "Script de Crash gratis",
-  "thimbles_intro": "Bienvenido a la experiencia definitiva de predicción de Thimbles. Usa nuestro sistema avanzado para predecir resultados y maximizar tus ganancias.",
   "important_label": "Importante",
   "deposit_note": "Debes registrarte con uno de los enlaces de abajo y depositar %s para activar tu código promocional.",
   "copy_code_label": "Copiar código promocional",
@@ -65,8 +62,5 @@
   "apple_page_title": "Predicciones de Apple of Fortune",
   "apple_level": "Nivel",
   "apple_cell": "Casilla",
-  "thimbles_page_title": "Predicciones de Thimbles",
-  "thimbles_mode": "1 bola",
-  "thimbles_pick": "Cubilete",
   "back_label": "Volver"
 }

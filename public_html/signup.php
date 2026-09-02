@@ -12,7 +12,7 @@ if (!array_key_exists($platform, $platforms)) {
 }
 
 // Which prediction card this flow ends on; unknown games fall back to crash.
-$toolkits = ['crash' => '/script.php', 'apple' => '/apple-script.php', 'thimbles' => '/thimbles-script.php'];
+$toolkits = ['crash' => '/script.php', 'apple' => '/apple-script.php'];
 $game = $_GET['game'] ?? 'crash';
 if (!isset($toolkits[$game])) {
     $game = 'crash';

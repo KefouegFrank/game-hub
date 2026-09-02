@@ -4,7 +4,6 @@
 $carouselGames = [
     ['name' => '', 'img' => '/assets/img/crash.jpg'],
     ['name' => '', 'img' => '/assets/img/apple-of-fortune.jpeg'],
-    ['name' => '', 'img' => '/assets/img/thimbles.jpeg'],
 ];
 $carouselHref = ONEXBET_WEBSITE_URL;
 ?>
