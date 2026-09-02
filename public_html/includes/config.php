@@ -6,8 +6,8 @@
  */
 
 // --- Basic site info ---
-define('SITE_NAME', 'GamesHub');
-define('SITE_TAGLINE', 'Best online games and betting platforms online');
+define('SITE_NAME', 'Prediction Casino');
+define('SITE_TAGLINE', 'Prédictions en direct pour Crash et Apple of Fortune');
 
 // --- Affiliate disclosure ---
 define('SHOW_AFFILIATE_DISCLOSURE', false);
@@ -47,8 +47,8 @@ define('MEGAPARI_PROMO_CODE', 'RBOSS1');
 
 // --- Supported languages ---
 $SUPPORTED_LANGS = [
-    'en' => 'English',
     'fr' => 'Français',
+    'en' => 'English',
     'es' => 'Español',
     'ar' => 'العربية',
 ];
@@ -56,14 +56,14 @@ $SUPPORTED_LANGS = [
 // Written right-to-left; drives <html dir> and the RTL rules in style.css.
 $RTL_LANGS = ['ar'];
 
-// --- Current language (?lang= wins, then the remembered choice, else en) ---
-$lang = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'en';
+// --- Current language (?lang= wins, then the remembered choice, else French) ---
+$lang = $_GET['lang'] ?? $_COOKIE['lang'] ?? 'fr';
 if (!array_key_exists($lang, $SUPPORTED_LANGS)) {
-    $lang = 'en';
+    $lang = 'fr';
 }
 
 // Remember an explicit pick: internal links don't carry ?lang=, so without this
-// every navigation drops back to English.
+// every navigation drops back to French.
 if (isset($_GET['lang']) && $lang === $_GET['lang'] && ($_COOKIE['lang'] ?? '') !== $lang && !headers_sent()) {
     setcookie('lang', $lang, [
         'expires' => time() + 31536000,
@@ -82,7 +82,7 @@ function t(string $key): string {
     if ($strings === null) {
         $file = __DIR__ . '/../lang/' . $GLOBALS['CURRENT_LANG'] . '.json';
         if (!file_exists($file)) {
-            $file = __DIR__ . '/../lang/en.json';
+            $file = __DIR__ . '/../lang/fr.json';
         }
         $strings = json_decode(file_get_contents($file), true) ?? [];
     }

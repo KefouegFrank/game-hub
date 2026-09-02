@@ -71,7 +71,7 @@ require __DIR__ . '/includes/header.php';
       <option value="other">🌍 Other</option>
     </select>
 
-    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-game="<?= htmlspecialchars($game) ?>" data-toolkit="<?= htmlspecialchars($toolkit) ?>" data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>">
+    <button type="button" id="signup-start-btn" class="btn btn-gradient btn-block" disabled data-toolkit="<?= htmlspecialchars($toolkit) ?>" data-href="<?= htmlspecialchars($platforms[$platform]['url']) ?>">
       <span class="btn-spinner" aria-hidden="true"></span><?= htmlspecialchars(t('signup_start')) ?>
     </button>
 

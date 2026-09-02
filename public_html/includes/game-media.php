@@ -9,7 +9,7 @@ $gameMediaPoster = $gameMediaPoster ?? ''; // non-empty renders a poster overlay
 ?>
 <?php $gameMediaPinned = $gameMediaFixed === 'portrait'; ?>
 <div class="game-media <?= $gameMediaPinned ? 'game-media-portrait game-media-fixed' : 'game-media-landscape' ?>" id="game-media"<?= $gameMediaPinned ? ' data-fixed-frame' : '' ?><?= $gameMediaPoster === '' ? '' : ' data-video-poster' ?>>
-  <video id="game-media-video" class="game-media-video" src="<?= htmlspecialchars($gameMediaSrc) ?>"<?= $gameMediaPoster === '' ? ' controls' : '' ?> playsinline preload="metadata" aria-label="<?= htmlspecialchars($gameMediaAlt) ?>"></video>
+  <video id="game-media-video" class="game-media-video" src="<?= htmlspecialchars($gameMediaSrc) ?>"<?= $gameMediaPoster === '' ? ' controls' : '' ?> muted playsinline preload="metadata" aria-label="<?= htmlspecialchars($gameMediaAlt) ?>"></video>
   <?php if ($gameMediaPoster !== ''): ?>
     <?php $posterTitle = $gameMediaPoster; ?>
     <?php require __DIR__ . '/video-poster.php'; ?>

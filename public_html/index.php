@@ -7,7 +7,7 @@ require __DIR__ . '/includes/header.php';
 <section class="hero">
   <div class="hero-visual">
     <div class="hero-player" data-video-poster>
-      <video class="hero-video" src="<?= htmlspecialchars(HERO_VIDEO) ?>"<?= HERO_POSTER === '' ? '' : ' poster="' . htmlspecialchars(HERO_POSTER) . '"' ?> playsinline preload="metadata"></video>
+      <video class="hero-video" src="<?= htmlspecialchars(HERO_VIDEO) ?>"<?= HERO_POSTER === '' ? '' : ' poster="' . htmlspecialchars(HERO_POSTER) . '"' ?> muted playsinline preload="metadata"></video>
       <?php
       $posterTitle = t('hero_video_title');
       require __DIR__ . '/includes/video-poster.php';

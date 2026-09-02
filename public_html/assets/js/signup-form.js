@@ -1,9 +1,11 @@
 // Signup page. Start unlocks only once the ID matches the 8-10 digit account
-// format 1xBet and MegaPari both use (same rule as assets/js/proof-upload.js)
-// and a country is picked. The first two attempts hit a busy script server
-// (see includes/script-server-modal.php); the third gets through to the
-// prediction card the game page picked. The counter persists so reloading
-// doesn't reset progress, and each game keeps its own count.
+// format 1xBet and MegaPari both use, and a country is picked. Start then reports
+// the script server full three times (see includes/script-server-modal.php)
+// before letting the visitor through to the prediction card.
+//
+// The count lives in memory only, so every arrival at this page pays the full
+// three warnings — a fresh load starts at zero, and the bfcache restore below
+// covers coming back from a prediction card, which is otherwise state-preserving.
 (() => {
   const startBtn = document.getElementById('signup-start-btn');
   const idInput = document.getElementById('account-id');
@@ -16,28 +18,15 @@
   if (!startBtn) return;
 
   const CONNECT_MS = 2600;
-  const ATTEMPTS_REQUIRED = 3;
-  // Counted per game: every card costs its own three tries at the busy server.
-  const ATTEMPT_KEY = 'script-attempts:' + (startBtn.dataset.game || 'crash');
+  const BUSY_WARNINGS = 3; // shown this many times, then the next try gets through
   const TOOLKIT_URL = startBtn.dataset.toolkit || '/script.php';
 
-  function attempts() {
-    try {
-      return Number(localStorage.getItem(ATTEMPT_KEY)) || 0;
-    } catch {
-      return 0; // storage blocked — every click counts as the first
-    }
-  }
+  let attempts = 0;
 
-  function recordAttempt() {
-    const next = attempts() + 1;
-    try {
-      localStorage.setItem(ATTEMPT_KEY, String(next));
-    } catch {
-      /* nothing to do; the visitor just retries */
-    }
-    return next;
-  }
+  // A bfcache restore keeps this script's state, so the count has to be cleared.
+  addEventListener('pageshow', (event) => {
+    if (event.persisted) attempts = 0;
+  });
 
   const ID_PATTERN = /^\d{8,10}$/;
   const isIdValid = () => !!idInput && ID_PATTERN.test(idInput.value.trim());
@@ -94,7 +83,7 @@
       return;
     }
 
-    const attempt = recordAttempt();
+    attempts += 1;
 
     startBtn.disabled = true;
     startBtn.classList.add('is-loading');
@@ -102,7 +91,7 @@
     if (modal) Modal.open(modal);
 
     setTimeout(() => {
-      if (attempt >= ATTEMPTS_REQUIRED) {
+      if (attempts > BUSY_WARNINGS) {
         window.location.href = TOOLKIT_URL;
         return;
       }
