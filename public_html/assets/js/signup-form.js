@@ -1,32 +1,15 @@
 // Signup page. Start unlocks only once the ID matches the 8-10 digit account
-// format 1xBet and MegaPari both use, and a country is picked. Start then reports
-// the script server full three times (see includes/script-server-modal.php)
-// before letting the visitor through to the prediction card.
-//
-// The count lives in memory only, so every arrival at this page pays the full
-// three warnings — a fresh load starts at zero, and the bfcache restore below
-// covers coming back from a prediction card, which is otherwise state-preserving.
+// format 1xBet and MegaPari both use, and a country is picked, then goes
+// straight to the prediction card.
 (() => {
   const startBtn = document.getElementById('signup-start-btn');
   const idInput = document.getElementById('account-id');
   const idError = document.getElementById('account-id-error');
   const serverSelect = document.getElementById('server-select');
-  const modal = document.getElementById('script-server-modal');
-  const connectingEl = document.getElementById('script-modal-connecting');
-  const busyEl = document.getElementById('script-modal-busy');
   const pills = document.querySelectorAll('.brand-pill-wide');
   if (!startBtn) return;
 
-  const CONNECT_MS = 2600;
-  const BUSY_WARNINGS = 3; // shown this many times, then the next try gets through
   const TOOLKIT_URL = startBtn.dataset.toolkit || '/script.php';
-
-  let attempts = 0;
-
-  // A bfcache restore keeps this script's state, so the count has to be cleared.
-  addEventListener('pageshow', (event) => {
-    if (event.persisted) attempts = 0;
-  });
 
   const ID_PATTERN = /^\d{8,10}$/;
   const isIdValid = () => !!idInput && ID_PATTERN.test(idInput.value.trim());
@@ -64,13 +47,6 @@
   if (serverSelect) serverSelect.addEventListener('change', refreshStartState);
   refreshStartState();
 
-  function setModalState(state) {
-    if (!connectingEl || !busyEl) return;
-    const connecting = state === 'connecting';
-    connectingEl.hidden = !connecting;
-    busyEl.hidden = connecting;
-  }
-
   startBtn.addEventListener('click', () => {
     if (!canStart()) {
       if (!isIdValid()) {
@@ -83,22 +59,10 @@
       return;
     }
 
-    attempts += 1;
-
+    // Spinner stays up for the navigation itself; no artificial delay.
     startBtn.disabled = true;
     startBtn.classList.add('is-loading');
-    setModalState('connecting');
-    if (modal) Modal.open(modal);
-
-    setTimeout(() => {
-      if (attempts > BUSY_WARNINGS) {
-        window.location.href = TOOLKIT_URL;
-        return;
-      }
-      startBtn.classList.remove('is-loading');
-      setModalState('busy');
-      refreshStartState(); // let them try again once it's reported as full
-    }, CONNECT_MS);
+    window.location.href = TOOLKIT_URL;
   });
 
   pills.forEach((pill) => {
