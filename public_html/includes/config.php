@@ -6,7 +6,7 @@
  */
 
 // --- Basic site info ---
-define('SITE_NAME', 'Prediction Casino');
+define('SITE_NAME', 'MEGAWIN');
 define('SITE_TAGLINE', 'Prédictions en direct pour Crash et Apple of Fortune');
 
 // --- Affiliate disclosure ---
