@@ -20,7 +20,7 @@ require __DIR__ . '/../includes/signup-rows.php';
 require __DIR__ . '/../includes/registration-check-modal.php';
 ?>
 
-<?php require __DIR__ . '/../includes/registration-guide-cta.php'; ?>
+<?php $guideGame = 'apple'; require __DIR__ . '/../includes/registration-guide-cta.php'; ?>
 
 <?php require __DIR__ . '/../includes/game-carousel.php'; ?>
 

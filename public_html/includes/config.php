@@ -16,7 +16,7 @@ define('ONEXBET_WEBSITE_URL', 'https://1xbet.cm/fr/registration');
 define('ONEXBET_APP_URL', 'https://1xbet.cm/fr/registration');
 define('MEGAPARI_WEBSITE_URL', 'https://rboss1.megapari-983300.com');
 define('MEGAPARI_APP_URL', 'https://rboss1.megapari-983300.com');
-define('MELBET_WEBSITE_URL', 'https://mlbbonus.fun/cm/?tag=d_4088679m_2170c_promocodeCIPAF&site=4088679&ad=2170&r=registration'); // TODO: real affiliate link, not set yet
+define('MELBET_WEBSITE_URL', 'https://mlbbonus.fun/cm/?tag=d_4088679m_2170c_promocodeCIPAF&site=4088679&ad=2170&r=registration');
 define('TUTORIAL_VIDEO_URL', '#'); // unused: nothing reads the pickers' data-href
 
 // --- Walkthrough video ---

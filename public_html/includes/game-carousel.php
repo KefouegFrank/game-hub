@@ -5,7 +5,7 @@ $carouselGames = [
     ['name' => '', 'img' => '/assets/img/crash.jpg'],
     ['name' => '', 'img' => '/assets/img/apple-of-fortune.jpeg'],
 ];
-$carouselHref = ONEXBET_WEBSITE_URL;
+$carouselHref = MELBET_WEBSITE_URL;
 ?>
 <div class="carousel-box">
   <h2 class="carousel-heading"><?= htmlspecialchars(t('try_more_games')) ?></h2>

@@ -1,6 +1,16 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
-$pageTitle = t('registration_guide_page_heading') . ' | ' . SITE_NAME;
+
+// Which game this "how to play" guide is for — the screenshots and step 2
+// caption differ per game; step 1 (finding "All Games") is the same for both.
+$game = $_GET['game'] ?? 'crash';
+if (!in_array($game, ['apple', 'crash'], true)) {
+    $game = 'crash';
+}
+$gameName = t($game === 'apple' ? 'nav_apple' : 'nav_crash');
+$guideHeading = sprintf(t('registration_guide_page_heading'), $gameName);
+
+$pageTitle = $guideHeading . ' | ' . SITE_NAME;
 $bodyClass = 'guide-page';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -12,7 +22,7 @@ require __DIR__ . '/includes/header.php';
 
 <div class="guide-intro">
   <?= icon_logo_mark('guide-logo-mark', 'logoGradGuide', '2') ?>
-  <h1 class="guide-heading"><?= htmlspecialchars(t('registration_guide_page_heading')) ?></h1>
+  <h1 class="guide-heading"><?= htmlspecialchars($guideHeading) ?></h1>
 </div>
 
 <div class="guide-warning">
@@ -22,13 +32,16 @@ require __DIR__ . '/includes/header.php';
 
 <?php
 $guideSteps = [
-    t('guide_step_1'),
-    t('guide_step_2'),
-    t('guide_step_3'),
+    ['instruction' => t('guide_step_1'), 'image' => '/assets/img/how-to-play-1.png'],
+    [
+        'instruction' => sprintf(t('guide_step_2'), $gameName),
+        'image' => '/assets/img/how-to-play-' . ($game === 'apple' ? '2' : '3') . '.png',
+    ],
 ];
-foreach ($guideSteps as $index => $stepInstruction):
+foreach ($guideSteps as $index => $step):
     $stepNumber = $index + 1;
-    $stepImage = null;
+    $stepInstruction = $step['instruction'];
+    $stepImage = $step['image'];
     require __DIR__ . '/includes/guide-step.php';
 endforeach;
 ?>
