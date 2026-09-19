@@ -25,9 +25,9 @@ require __DIR__ . '/../includes/header.php';
   </div>
 
   <div class="signup-rows">
+    <?php $rowCompact = true; ?>
+    <?php if (false): ?>
     <?php
-    $rowCompact = true;
-
     $rowBrandName = 'MegaPari';
     $rowLogo = '/assets/img/megapari-logo.png';
     $rowUrl = MEGAPARI_WEBSITE_URL;
@@ -40,9 +40,17 @@ require __DIR__ . '/../includes/header.php';
     $rowCode = ONEXBET_PROMO_CODE;
     require __DIR__ . '/../includes/promo-row.php';
     ?>
+    <?php endif; ?>
+    <?php
+    $rowBrandName = 'Melbet';
+    $rowLogo = '/assets/img/melbet.png';
+    $rowUrl = MELBET_WEBSITE_URL;
+    $rowCode = MELBET_PROMO_CODE;
+    require __DIR__ . '/../includes/promo-row.php';
+    ?>
   </div>
 
-  <a id="continue-btn" class="btn btn-blue game-flow-next" href="/signup.php?platform=megapari" data-platform="megapari"><?= htmlspecialchars(t('next_label')) ?></a>
+  <a id="continue-btn" class="btn btn-blue game-flow-next" href="/signup.php?platform=melbet" data-platform="melbet"><?= htmlspecialchars(t('next_label')) ?></a>
 </section>
 
 <?php require __DIR__ . '/../includes/registration-check-modal.php'; ?>

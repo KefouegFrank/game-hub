@@ -1,7 +1,5 @@
 <?php
-// One numbered guide step: badge + screenshot + instruction line.
-// Set $stepNumber, $stepInstruction, and optionally $stepImage before including.
-// When $stepImage is empty, renders a placeholder box instead.
+
 ?>
 <div class="guide-step">
   <span class="guide-step-badge"><?= (int) $stepNumber ?></span>

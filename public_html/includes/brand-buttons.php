@@ -1,11 +1,11 @@
 <?php
-// Brand video picker for the crash flow: one button per brand, each carrying its
-// walkthrough clip. Same active/data-* contract as platform-buttons.php, so
-// assets/js/platform-select.js drives the player above unchanged.
-// MegaPari starts active because its portrait clip is what the pinned frame is
-// shaped for — crash.php loads that same clip as the initial source.
+// Brand video picker for the crash flow. Disabled in favour of a single "how
+// to register" button below that plays the video above instead of picking a
+// variant — kept here in case the picker comes back. See
+// includes/platform-buttons.php for the same swap on Apple of Fortune.
 ?>
 <div class="platform-select brand-video-select">
+  <?php if (false): ?>
   <div class="brand-video-buttons">
     <button type="button" class="platform-btn brand-video-btn brand-onexbet" data-href="<?= htmlspecialchars(ONEXBET_WEBSITE_URL) ?>" data-media="<?= htmlspecialchars(ONEXBET_APP_VIDEO) ?>" data-platform="onexbet">
       <span class="brand-video-chip"><img src="/assets/img/Logo_1xBet.png" alt=""></span>
@@ -16,4 +16,9 @@
       MegaPari <?= htmlspecialchars(t('brand_video_label')) ?>
     </button>
   </div>
+  <?php endif; ?>
+  <button type="button" class="platform-btn platform-btn-wide" data-play-video>
+    <?= icon_clipboard() ?>
+    <?= htmlspecialchars(t('how_to_register_cta')) ?>
+  </button>
 </div>

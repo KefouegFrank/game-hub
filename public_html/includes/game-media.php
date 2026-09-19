@@ -1,8 +1,5 @@
 <?php
-// Swappable tutorial player shown above the platform buttons. Starts on the
-// clip belonging to the first active button; platform-select.js sizes the frame
-// from whatever clip is loaded, so portrait and landscape both fit.
-// Include after setting $gameMediaAlt.
+
 $gameMediaSrc = $gameMediaSrc ?? ONEXBET_WEBSITE_VIDEO;
 $gameMediaFixed = $gameMediaFixed ?? ''; // 'portrait' pins the frame; clips letterbox inside it
 $gameMediaPoster = $gameMediaPoster ?? ''; // non-empty renders a poster overlay with this title

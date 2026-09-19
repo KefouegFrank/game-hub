@@ -2,13 +2,14 @@
 require_once __DIR__ . '/includes/config.php';
 
 $platforms = [
-    'onexbet' => ['name' => '1xBet', 'logo' => '/assets/img/Logo_1xBet.png', 'url' => ONEXBET_WEBSITE_URL],
-    'megapari'  => ['name' => 'MegaPari', 'logo' => '/assets/img/megapari-logo.png', 'url' => MEGAPARI_WEBSITE_URL],
+    // 'onexbet' => ['name' => '1xBet', 'logo' => '/assets/img/Logo_1xBet.png', 'url' => ONEXBET_WEBSITE_URL],
+    // 'megapari'  => ['name' => 'MegaPari', 'logo' => '/assets/img/megapari-logo.png', 'url' => MEGAPARI_WEBSITE_URL],
+    'melbet' => ['name' => 'Melbet', 'logo' => '/assets/img/melbet.png', 'url' => MELBET_WEBSITE_URL],
 ];
 
-$platform = $_GET['platform'] ?? 'onexbet';
+$platform = $_GET['platform'] ?? 'melbet';
 if (!array_key_exists($platform, $platforms)) {
-    $platform = 'onexbet';
+    $platform = 'melbet';
 }
 
 // Which prediction card this flow ends on; unknown games fall back to crash.

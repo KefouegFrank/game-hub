@@ -1,10 +1,11 @@
 <?php
 // Platform picker: 1xBet/MegaPari x website/app, plus the tutorial video button.
-// Website buttons stay in the left column, app buttons in the right. Each one
-// carries its walkthrough clip; the frame above resizes to whatever it loads.
-// Include after includes/game-media.php.
+// Disabled in favour of a single "how to register" button below that plays the
+// video above instead of picking a variant — kept here in case the picker comes
+// back. See includes/brand-buttons.php for the same swap on crash.php.
 ?>
 <div class="platform-select">
+  <?php if (false): ?>
   <div class="platform-buttons">
     <button type="button" class="platform-btn active" data-href="<?= htmlspecialchars(ONEXBET_WEBSITE_URL) ?>" data-media="<?= htmlspecialchars(ONEXBET_WEBSITE_VIDEO) ?>" data-platform="onexbet" data-code="<?= htmlspecialchars(ONEXBET_PROMO_CODE) ?>">
       <?= icon_chrome() ?>
@@ -26,5 +27,10 @@
   <button type="button" class="platform-btn platform-btn-wide" data-href="<?= htmlspecialchars(TUTORIAL_VIDEO_URL) ?>" data-media="<?= htmlspecialchars(ONEXBET_WEBSITE_VIDEO) ?>" data-platform="onexbet" data-code="<?= htmlspecialchars(ONEXBET_PROMO_CODE) ?>">
     <?= icon_clapper() ?>
     <?= htmlspecialchars(t('register_cta')) ?>
+  </button>
+  <?php endif; ?>
+  <button type="button" class="platform-btn platform-btn-wide" data-play-video>
+    <?= icon_clipboard() ?>
+    <?= htmlspecialchars(t('how_to_register_cta')) ?>
   </button>
 </div>

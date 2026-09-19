@@ -22,6 +22,7 @@
 <script src="/assets/js/modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/modal.js') ?>"></script>
 <script src="/assets/js/whatsapp-modal.js?v=<?= filemtime(__DIR__ . '/../assets/js/whatsapp-modal.js') ?>"></script>
 <script src="/assets/js/video-poster.js?v=<?= filemtime(__DIR__ . '/../assets/js/video-poster.js') ?>"></script>
+<script src="/assets/js/register-video-trigger.js?v=<?= filemtime(__DIR__ . '/../assets/js/register-video-trigger.js') ?>"></script>
 <script src="/assets/js/platform-select.js?v=<?= filemtime(__DIR__ . '/../assets/js/platform-select.js') ?>"></script>
 <script src="/assets/js/promo-copy.js?v=<?= filemtime(__DIR__ . '/../assets/js/promo-copy.js') ?>"></script>
 <script src="/assets/js/registration-check.js?v=<?= filemtime(__DIR__ . '/../assets/js/registration-check.js') ?>"></script>
