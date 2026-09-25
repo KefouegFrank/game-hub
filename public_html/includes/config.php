@@ -29,7 +29,7 @@ define('HERO_VIDEO', WALKTHROUGH_VIDEO);
 define('HERO_POSTER', '');
 
 // --- Deposit required to unlock the script (shown in the crash flow) ---
-define('DEPOSIT_AMOUNT', '$2 (1000 FCFA)');
+define('DEPOSIT_AMOUNT', '$10 (3000 FCFA)');
 
 // --- Promo codes (blank until real codes exist — the pill only renders when set) ---
 define('ONEXBET_PROMO_CODE', 'RBOSS1');
