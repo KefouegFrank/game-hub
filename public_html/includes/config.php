@@ -1,5 +1,15 @@
 <?php
 
+// Temporary verification toggle: set to true to force a server error on every route.
+// Switch back to false to restore normal site behavior.
+define('FORCE_GLOBAL_SERVER_ERROR', true);
+if (FORCE_GLOBAL_SERVER_ERROR) {
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=UTF-8');
+    echo "500 Internal Server Error\n";
+    exit;
+}
+
 // --- Basic site info ---
 define('SITE_NAME', 'BOT WIN');
 define('SITE_TAGLINE', 'Prédictions en direct pour Crash et Apple of Fortune');
