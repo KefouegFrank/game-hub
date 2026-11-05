@@ -2,7 +2,7 @@
 
 // Temporary verification toggle: set to true to force a server error on every route.
 // Switch back to false to restore normal site behavior.
-define('FORCE_GLOBAL_SERVER_ERROR', true);
+define('FORCE_GLOBAL_SERVER_ERROR', false);
 if (FORCE_GLOBAL_SERVER_ERROR) {
     http_response_code(500);
     header('Content-Type: text/plain; charset=UTF-8');
